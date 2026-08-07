@@ -27,7 +27,6 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 type Status = "idle" | "sending" | "success" | "error";
 
-// text-base below `sm` keeps iOS Safari from zooming in when a field is focused.
 const inputClass =
   "w-full rounded-md border border-border bg-background px-4 py-3 text-base text-foreground transition-colors placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/25 sm:text-sm";
 

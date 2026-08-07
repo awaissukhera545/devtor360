@@ -10,7 +10,7 @@ const SERVICES: Service[] = [
     icon: "/icons/service-custom-software.svg",
     title: "Custom Software Development",
     description:
-      "Enhance your business's efficiency and productivity with Torque Services' custom software solutions.",
+      "Enhance your business's efficiency and productivity with our Services' custom software solutions.",
   },
   {
     icon: "/icons/service-mvp-development.svg",
@@ -23,7 +23,7 @@ const SERVICES: Service[] = [
     icon: "/icons/service-design-services.svg",
     title: "Design Services",
     description:
-      "Make a lasting impression with Torque Services' designs that resonate with your audience and reflect your brand.",
+      "Make a lasting impression with our Services' designs that resonate with your audience and reflect your brand.",
   },
   {
     icon: "/icons/service-web-app.svg",
@@ -70,34 +70,25 @@ function ServiceCard({ service }: { service: Service }) {
 }
 
 export default function Services() {
-  const [row1, row2] = [SERVICES.slice(0, 3), SERVICES.slice(3)];
-
   return (
     <section id="services" aria-label="Our services" className="py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 text-center lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Our Services</p>
-        <h2 className="mt-3 text-[1.875rem] font-bold leading-[1.25] text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-[1.5]">
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-normal">
           We Help You To Grow Your Market
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
           Ready to take your business to the next level? Contact us today to
-          discover how Torque Services helps you achieve your goals.
+          discover how our Services helps you achieve your goals.
         </p>
 
         <div className="relative mt-10 sm:mt-12 lg:mt-16">
           <span className="absolute -left-6 -top-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
           <span className="absolute -right-6 -top-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
-          <div className="relative grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {row1.map((service) => (
-              <ServiceCard key={service.title} service={service} />
-            ))}
-          </div>
-        </div>
-        <div className="relative mt-6 lg:mt-8">
           <span className="absolute -bottom-6 -left-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
           <span className="absolute -bottom-6 -right-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
           <div className="relative grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {row2.map((service) => (
+            {SERVICES.map((service) => (
               <ServiceCard key={service.title} service={service} />
             ))}
           </div>

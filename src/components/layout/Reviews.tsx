@@ -86,9 +86,12 @@ function ReviewRow({
   offset?: boolean;
 }) {
   return (
-    <div className="overflow-hidden">
+    <div
+      className={`overflow-hidden ${
+        offset ? "-translate-x-[80px] sm:-translate-x-[162px]" : ""
+      }`}
+    >
       <div className="flex w-max animate-marquee items-center gap-6">
-        {offset && <div className="w-[80px] shrink-0 sm:w-[162px]" aria-hidden="true" />}
         {[...reviews, ...reviews].map((review, index) => (
           <ReviewCard key={index} review={review} />
         ))}

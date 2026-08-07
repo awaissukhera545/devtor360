@@ -1,16 +1,14 @@
-import CompanyLogos from "@/components/layout/CompanyLogos";
-import FAQs from "@/components/layout/FAQs";
-import Footer from "@/components/layout/Footer";
-import GetQuote from "@/components/layout/GetQuote";
-import Header from "@/components/layout/Header";
 import Hero from "@/components/layout/Hero";
-import Industries from "@/components/layout/Industries";
-import OurExpertise from "@/components/layout/OurExpertise";
+import CompanyLogos from "@/components/layout/CompanyLogos";
+import Services from "@/components/layout/Services";
 import OurStats from "@/components/layout/OurStats";
 import Projects from "@/components/layout/Projects";
-import Reviews from "@/components/layout/Reviews";
-import Services from "@/components/layout/Services";
+import OurExpertise from "@/components/layout/OurExpertise";
+import Industries from "@/components/layout/Industries";
 import WhyChooseUs from "@/components/layout/WhyChooseUs";
+import Reviews from "@/components/layout/Reviews";
+import GetQuote from "@/components/layout/GetQuote";
+import FAQs from "@/components/layout/FAQs";
 
 export default function Home() {
   return (
@@ -19,9 +17,9 @@ export default function Home() {
       <CompanyLogos />
       <Services />
       <OurStats />
-      <Projects />
       <OurExpertise />
       <Industries />
+      <Projects />
       <WhyChooseUs />
       <Reviews />
       <GetQuote />

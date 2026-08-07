@@ -88,7 +88,7 @@ export default function Hero() {
                 <img
                   src="/icons/hero-trending-arrow.svg"
                   alt=""
-                  className="mb-3 h-5 w-5 sm:mb-3.5 sm:h-6 sm:w-6 lg:mb-4 lg:h-[30px] lg:w-[30px]"
+                  className="mb-3 h-5 w-5 sm:mb-3.5 sm:h-6 sm:w-6 lg:mb-4 lg:h-7.5 lg:w-7.5"
                   width={30}
                   height={30}
                 />
@@ -98,10 +98,10 @@ export default function Hero() {
             <div className="flex h-full w-[45%] flex-col justify-between rounded-2xl bg-accent p-4 sm:p-5">
               <div>
                 <p className="text-[1.75rem] font-bold leading-none text-brand-700 sm:text-[3rem] lg:text-[3.5rem] xl:text-[4.25rem]">
-                  230+
+                  120+
                 </p>
                 <p className="mt-2 text-xs leading-snug text-primary sm:mt-3 sm:text-sm">
-                  big companies that we work with, and trust us very much
+                  companies that we work with, and trust us very much
                 </p>
               </div>
               <div className="mt-4 h-1.5 w-full rounded-full bg-white">
@@ -123,9 +123,6 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* The full-size chart only clears the copy once the card is wide
-                enough (xl). Below that it stays in flow, so the two can never
-                overlap however narrow the card gets. */}
             <div className="flex shrink-0 items-end gap-1.5 xl:absolute xl:bottom-0 xl:right-9">
               <svg
                 width="185"
@@ -133,7 +130,7 @@ export default function Hero() {
                 viewBox="0 0 185 135"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="block h-14 w-auto sm:h-20 md:h-28 xl:h-[135px] xl:w-[185px]"
+                className="block h-14 w-auto sm:h-20 md:h-28 xl:h-33.75 xl:w-46.25"
               >
                 <rect
                   y="57.7104"

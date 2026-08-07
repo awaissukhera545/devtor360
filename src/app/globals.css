@@ -157,6 +157,7 @@
   html {
     /* Stop iOS from inflating text when the device is rotated to landscape. */
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
   }
   /* The header is sticky (h-20), so in-page anchors need to clear it. */
   section[id] {
