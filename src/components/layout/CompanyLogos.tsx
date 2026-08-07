@@ -12,7 +12,7 @@ const CLIENTS = [
 export default function CompanyLogos() {
   return (
     <section aria-label="Trusted by" className="overflow-hidden bg-subtle">
-      <div className="flex w-max animate-marquee items-center gap-16 py-10">
+      <div className="flex w-max animate-marquee items-center gap-10 py-7 sm:gap-12 sm:py-8 lg:gap-16 lg:py-10">
         {[...CLIENTS, ...CLIENTS].map((client, index) => (
           <Image
             key={`${client.name}-${index}`}
@@ -20,7 +20,7 @@ export default function CompanyLogos() {
             alt={client.name}
             width={client.width}
             height={client.height}
-            className="h-14 w-auto shrink-0 opacity-70"
+            className="h-10 w-auto shrink-0 opacity-70 sm:h-12 lg:h-14"
           />
         ))}
       </div>

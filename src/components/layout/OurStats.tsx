@@ -48,14 +48,14 @@ function CountUp({ target, duration = 2000 }: CountUpProps) {
 export default function OurStats() {
   return (
     <section aria-label="Our track record" className="border-t border-border">
-      <div className="mx-auto grid max-w-content grid-cols-2 gap-8 px-6 py-16 sm:grid-cols-4 lg:px-8">
+      <div className="mx-auto grid max-w-content grid-cols-2 gap-x-6 gap-y-10 px-6 py-12 sm:grid-cols-4 sm:gap-8 sm:py-14 lg:px-8 lg:py-16">
         {STATS.map((stat, index) => {
           const isAlternativeColor = index === 1 || index === 3;
           
           return (
             <div key={stat.label} className="flex flex-col items-center justify-center text-center">
               <p 
-                className="text-stat font-medium"
+                className="text-[2.5rem] font-medium leading-none tracking-[-0.03em] sm:text-[3.25rem] lg:text-stat"
                 style={{
                   color: isAlternativeColor ? "var(--brand-700, #024890)" : "var(--primary)"
                 }}

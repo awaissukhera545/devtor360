@@ -59,36 +59,38 @@ const TECH_STACK = [
   { name: "Java", src: "/icons/tech/java.svg", width: 86, height: 140 },
 ];
 
-const CARD_WIDTH = 320;
 const CARD_GAP = 24;
-const STEP = CARD_WIDTH + CARD_GAP;
 
 export default function Projects() {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   const goTo = (direction: 1 | -1) => {
-    scrollerRef.current?.scrollBy({
-      left: direction * STEP,
-      behavior: "smooth",
-    });
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    // The card width is responsive, so measure it instead of assuming 320px.
+    const card = scroller.firstElementChild;
+    const step = (card?.getBoundingClientRect().width ?? 320) + CARD_GAP;
+
+    scroller.scrollBy({ left: direction * step, behavior: "smooth" });
   };
 
   return (
-    <section id="portfolio" aria-label="Our projects" className="bg-muted py-24">
+    <section id="portfolio" aria-label="Our projects" className="bg-muted py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Portfolio</p>
-        <h2 className="mt-3 text-[2.75rem] font-bold text-foreground">
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-[1.25] text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.75rem] lg:leading-[1.5]">
           Our Projects
         </h2>
 
         <div
           ref={scrollerRef}
-          className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth scrollbar-none pb-4"
+          className="mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth scrollbar-none pb-4 sm:mt-10 lg:mt-12"
         >
           {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="w-[320px] shrink-0 snap-start rounded-xl border border-border bg-card shadow-sm"
+              className="w-[280px] shrink-0 snap-start rounded-xl border border-border bg-card shadow-sm sm:w-[320px]"
             >
               <div className="relative aspect-16/10 overflow-hidden rounded-t-xl bg-muted">
                 <Image
@@ -96,11 +98,11 @@ export default function Projects() {
                   alt={`${project.title} product screenshot`}
                   fill
                   className="object-cover object-top"
-                  sizes="320px"
+                  sizes="(min-width: 640px) 320px, 280px"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-foreground">
+              <div className="p-5 sm:p-6">
+                <h3 className="text-xl font-bold text-foreground sm:text-2xl">
                   {project.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -143,8 +145,8 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="mt-20 overflow-hidden bg-subtle">
-        <div className="flex w-max animate-marquee items-center gap-16 py-10">
+      <div className="mt-14 overflow-hidden bg-subtle sm:mt-16 lg:mt-20">
+        <div className="flex w-max animate-marquee items-center gap-10 py-7 sm:gap-12 sm:py-8 lg:gap-16 lg:py-10">
           {[...TECH_STACK, ...TECH_STACK].map((tech, index) => (
             <Image
               key={`${tech.name}-${index}`}
@@ -152,7 +154,7 @@ export default function Projects() {
               alt={tech.name}
               width={tech.width}
               height={tech.height}
-              className="h-17.5 w-auto shrink-0 opacity-70"
+              className="h-12 w-auto shrink-0 opacity-70 sm:h-14 lg:h-17.5"
             />
           ))}
         </div>

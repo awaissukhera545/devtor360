@@ -33,19 +33,19 @@ const PILLARS: Pillar[] = [
 
 export default function OurExpertise() {
   return (
-    <section aria-label="Our expertise" className="py-24 bg-white">
+    <section aria-label="Our expertise" className="py-16 bg-white sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 lg:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end">
+        <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end">
           <div className="w-full lg:w-1/2">
             <p className="text-eyebrow uppercase text-primary">
               Our Expertise
             </p>
-            <h2 className="mt-3 max-w-xl text-display font-bold leading-tight text-foreground">
+            <h2 className="mt-3 max-w-xl text-[2rem] font-bold leading-tight text-foreground sm:text-[2.5rem] lg:text-display">
               Why Choose Us for Your Next Big <br className="hidden lg:block"/> Project?
             </h2>
           </div>
           <div className="w-full lg:w-1/2">
-            <p className="text-xl leading-relaxed text-muted-foreground">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
               Unlock your business&apos;s potential with Devtor360&apos;s
               expert development and design. Craft impactful solutions and
               designs that resonate with your audience.
@@ -59,17 +59,17 @@ export default function OurExpertise() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
           {PILLARS.map((pillar) => (
             <div
               key={pillar.title}
-              className="rounded-2xl border border-slate-100 bg-white p-8 shadow-xs transition-shadow hover:shadow-md text-left flex flex-col items-start"
+              className="rounded-2xl border border-slate-100 bg-white p-6 shadow-xs transition-shadow hover:shadow-md text-left flex flex-col items-start sm:p-7 lg:p-8"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#e8f1ff]">
-                <img src={pillar.icon} alt="" width={40} height={40} className="object-contain" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#e8f1ff] sm:h-16 sm:w-16">
+                <img src={pillar.icon} alt="" width={40} height={40} className="h-9 w-9 object-contain sm:h-10 sm:w-10" />
               </div>
-              
-              <h3 className="mt-6 text-[17.5px] font-bold text-[#0c1e36]">
+
+              <h3 className="mt-5 text-[17.5px] font-bold text-[#0c1e36] lg:mt-6">
                 {pillar.title}
               </h3>
               

@@ -64,7 +64,7 @@ export default function Header() {
       {isMenuOpen && (
         <nav
           aria-label="Mobile"
-          className="flex flex-col gap-1 border-t border-border px-6 py-4 lg:hidden"
+          className="flex max-h-[calc(100dvh-5rem)] flex-col gap-1 overflow-y-auto border-t border-border bg-background px-6 py-4 lg:hidden"
         >
           {NAV_LINKS.map((link) => (
             <a

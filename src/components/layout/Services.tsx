@@ -47,9 +47,9 @@ const SERVICES: Service[] = [
 
 function ServiceCard({ service }: { service: Service }) {
   return (
-    <div className="flex h-full flex-col rounded-xl border border-border bg-card p-8 text-left shadow-sm">
-      <img src={service.icon} alt="" className="h-16.5 w-auto self-start object-contain" />
-      <h3 className="mt-6 text-xl font-bold text-foreground">
+    <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6 text-left shadow-sm sm:p-7 lg:p-8">
+      <img src={service.icon} alt="" className="h-14 w-auto self-start object-contain sm:h-16.5" />
+      <h3 className="mt-5 text-xl font-bold text-foreground lg:mt-6">
         {service.title}
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground mb-5">
@@ -73,10 +73,10 @@ export default function Services() {
   const [row1, row2] = [SERVICES.slice(0, 3), SERVICES.slice(3)];
 
   return (
-    <section id="services" aria-label="Our services" className="py-24">
+    <section id="services" aria-label="Our services" className="py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 text-center lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Our Services</p>
-        <h2 className="mt-3 text-[2.5rem] font-bold text-foreground">
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-[1.25] text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-[1.5]">
           We Help You To Grow Your Market
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
@@ -84,19 +84,19 @@ export default function Services() {
           discover how Torque Services helps you achieve your goals.
         </p>
 
-        <div className="relative mt-16">
+        <div className="relative mt-10 sm:mt-12 lg:mt-16">
           <span className="absolute -left-6 -top-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
           <span className="absolute -right-6 -top-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
-          <div className="relative grid items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="relative grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {row1.map((service) => (
               <ServiceCard key={service.title} service={service} />
             ))}
           </div>
         </div>
-        <div className="relative mt-8">
+        <div className="relative mt-6 lg:mt-8">
           <span className="absolute -bottom-6 -left-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
           <span className="absolute -bottom-6 -right-6 hidden h-20 w-20 rounded-lg bg-primary sm:block" />
-          <div className="relative grid items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="relative grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {row2.map((service) => (
               <ServiceCard key={service.title} service={service} />
             ))}

@@ -31,13 +31,13 @@ export default function FAQs() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faqs" aria-label="Frequently asked questions" className="py-24">
-      <div className="mx-auto max-w-[75rem] px-6 lg:px-8">
-        <h2 className="text-center text-4xl font-bold text-foreground">
+    <section id="faqs" aria-label="Frequently asked questions" className="py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-content px-6 lg:px-8">
+        <h2 className="text-center text-[1.75rem] font-bold leading-tight text-foreground sm:text-[2rem] lg:text-4xl lg:leading-10">
           Frequently Asked Questions
         </h2>
 
-        <div className="mx-auto mt-12 max-w-3xl divide-y divide-border border-t border-border">
+        <div className="mx-auto mt-8 max-w-3xl divide-y divide-border border-t border-border sm:mt-10 lg:mt-12">
           {FAQS.map((faq, index) => {
             const isOpen = index === openIndex;
             return (
@@ -46,12 +46,12 @@ export default function FAQs() {
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center gap-4 py-5 text-left"
+                  className="flex w-full items-center gap-3 py-4 text-left sm:gap-4 sm:py-5"
                 >
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-semibold text-primary">
                     {index + 1}
                   </span>
-                  <span className="flex-1 text-xl font-semibold text-foreground">
+                  <span className="flex-1 text-base font-semibold text-foreground sm:text-lg lg:text-xl">
                     {faq.question}
                   </span>
                   <ChevronDown
@@ -62,7 +62,7 @@ export default function FAQs() {
                   />
                 </button>
                 {isOpen && (
-                  <p className="pb-5 pl-11 text-base leading-relaxed text-muted-foreground">
+                  <p className="pb-5 pl-10 text-sm leading-relaxed text-muted-foreground sm:pl-11 sm:text-base">
                     {faq.answer}
                   </p>
                 )}

@@ -27,8 +27,9 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 type Status = "idle" | "sending" | "success" | "error";
 
+// text-base below `sm` keeps iOS Safari from zooming in when a field is focused.
 const inputClass =
-  "w-full rounded-md border border-border bg-background px-4 py-3 text-sm text-foreground transition-colors placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/25";
+  "w-full rounded-md border border-border bg-background px-4 py-3 text-base text-foreground transition-colors placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/25 sm:text-sm";
 
 const labelClass = "mb-2 block text-sm font-semibold text-foreground";
 
@@ -70,8 +71,8 @@ export default function ContactForm() {
   const isSending = status === "sending";
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-8 shadow-md lg:p-10">
-      <h2 className="text-[1.75rem] font-bold leading-tight text-foreground">
+    <div className="rounded-2xl border border-border bg-card p-5 shadow-md sm:p-8 lg:p-10">
+      <h2 className="text-2xl font-bold leading-tight text-foreground sm:text-[1.75rem]">
         Send Us a Message
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -79,8 +80,8 @@ export default function ContactForm() {
         one business day.
       </p>
 
-      <form ref={formRef} onSubmit={handleSubmit} className="mt-8 space-y-5">
-        <div className="grid gap-5 sm:grid-cols-2">
+      <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-5 sm:mt-8">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
           <div>
             <label htmlFor="from_name" className={labelClass}>
               Full Name <span className="text-destructive">*</span>

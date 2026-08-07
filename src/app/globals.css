@@ -119,6 +119,16 @@
   --text-display--letter-spacing: -0.035em;
   --text-display--font-weight: 700;
 
+  --text-display-sm: 2.125rem;
+  --text-display-sm--line-height: 1.15;
+  --text-display-sm--letter-spacing: -0.03em;
+  --text-display-sm--font-weight: 700;
+
+  --text-display-md: 2.75rem;
+  --text-display-md--line-height: 1.1;
+  --text-display-md--letter-spacing: -0.032em;
+  --text-display-md--font-weight: 700;
+
   --text-stat: 4.8125rem;
   --text-stat--line-height: 1;
   --text-stat--letter-spacing: -0.03em;
@@ -143,6 +153,14 @@
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+  html {
+    /* Stop iOS from inflating text when the device is rotated to landscape. */
+    -webkit-text-size-adjust: 100%;
+  }
+  /* The header is sticky (h-20), so in-page anchors need to clear it. */
+  section[id] {
+    scroll-margin-top: 5rem;
   }
   body {
     background-color: var(--color-background);
@@ -243,5 +261,15 @@
   }
   .scrollbar-none::-webkit-scrollbar {
     display: none;
+  }
+
+  /*
+   * Beyond laptop widths the 75rem container strands content in the middle of
+   * the screen. Widen it past 1700px only, so no laptop resolution is affected.
+   */
+  @media (min-width: 1700px) {
+    .max-w-content {
+      max-width: 88rem;
+    }
   }
 }

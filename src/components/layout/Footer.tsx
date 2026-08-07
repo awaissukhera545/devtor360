@@ -40,9 +40,9 @@ const SOCIAL_LINKS = [
 export default function Footer() {
   return (
     <footer className="bg-dark text-dark-foreground">
-      <div className="mx-auto grid max-w-content gap-12 px-6 py-16 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-content gap-10 px-6 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-12 lg:px-8 lg:py-16">
         <div>
-          <div className="relative h-12 w-48 flex items-center gap-2">
+          <div className="relative h-10 w-40 flex items-center gap-2 sm:h-12 sm:w-48">
             <Image
               src="/devtor360-light.svg"
               alt="Devtor360-logo"
@@ -51,7 +51,7 @@ export default function Footer() {
             />
           </div>
 
-          <p className="mt-4 mb-10 max-w-xs text-sm leading-relaxed text-white/70">
+          <p className="mt-4 mb-8 max-w-xs text-sm leading-relaxed text-white/70 lg:mb-10">
             Say goodbye to long development cycles and save time, money, and
             opportunity cost with Devtor360.
           </p>
@@ -66,8 +66,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-white">Services</h3>
-          <ul className="mt-4 space-y-3 text-lg text-white/70">
+          <h3 className="text-xl font-bold text-white sm:text-2xl">Services</h3>
+          <ul className="mt-4 space-y-3 text-base text-white/70 sm:text-lg">
             {SERVICES.map((service) => (
               <li key={service}>{service}</li>
             ))}
@@ -75,11 +75,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-3xl font-bold text-white">Available For Help</h3>
+          <h3 className="text-xl font-bold text-white sm:text-2xl lg:text-3xl">
+            Available For Help
+          </h3>
           <p className="mt-4 text-sm text-white/70">
             24 Hours A Day &ndash; 5 Days A Week
           </p>
-          <div className="mt-4 space-y-3 text-lg">
+          <div className="mt-4 space-y-3 text-base sm:text-lg">
             <a
               href="mailto:info@devtor360.com"
               className="flex items-center gap-3 text-white/90 hover:text-white"
@@ -103,13 +105,13 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-content flex-col items-center justify-between gap-4 px-6 py-6 text-sm text-white/70 sm:flex-row lg:px-8">
+        <div className="mx-auto flex max-w-content flex-col items-center gap-5 px-6 py-6 text-center text-sm text-white/70 md:flex-row md:justify-between md:gap-4 md:text-left lg:px-8">
           <p>&copy; devtor360 Inc. {new Date().getFullYear()}. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="/terms_and_conditions" className="hover:text-white">
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+            <a href="/terms_and_conditions" className="py-1.5 hover:text-white">
               Terms &amp; Conditions
             </a>
-            <a href="/privacy_policy" className="hover:text-white">
+            <a href="/privacy_policy" className="py-1.5 hover:text-white">
               Privacy Policy
             </a>
             <div className="flex items-center gap-3">

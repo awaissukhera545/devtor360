@@ -24,15 +24,15 @@ export default function Industries() {
     <section
       id="industries"
       aria-label="Industries we cater"
-      className="bg-muted py-24"
+      className="bg-muted py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-content px-6 text-center lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Industries</p>
-        <h2 className="mt-3 text-[2.5rem] font-bold text-foreground">
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-[1.25] text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-[1.5]">
           Industries We Cater
         </h2>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4">
           {INDUSTRIES.map((industry, index) => {
             const isNinth = index === 8;
             const isTenth = index === 9;
@@ -40,7 +40,7 @@ export default function Industries() {
             return (
               <div
                 key={industry.title}
-                className={`rounded-xl border border-border bg-card p-6 text-center flex flex-col items-center ${
+                className={`rounded-xl border border-border bg-card p-5 text-center flex flex-col items-center sm:p-6 ${
                   isNinth ? "lg:col-start-2" : ""
                 } ${isTenth ? "lg:col-start-3" : ""}`}
               >
@@ -49,14 +49,14 @@ export default function Industries() {
                   alt=""
                   width={70}
                   height={70}
-                  className="mx-auto"
+                  className="mx-auto h-14 w-14 sm:h-[70px] sm:w-[70px]"
                 />
 
                 <h3 className="mt-4 text-lg font-bold text-foreground">
                   {industry.title}
                 </h3>
 
-                <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   {DESCRIPTION}
                 </p>
               </div>

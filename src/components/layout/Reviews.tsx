@@ -57,7 +57,7 @@ const ROW2 = REVIEWS.slice(3);
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="w-[300px] shrink-0 rounded-xl border border-border bg-card p-6 text-left shadow-sm">
+    <article className="w-[260px] shrink-0 rounded-xl border border-border bg-card p-5 text-left shadow-sm sm:w-[300px] sm:p-6">
       <div className="flex items-center gap-3">
         <Image
           src={review.avatar}
@@ -88,7 +88,7 @@ function ReviewRow({
   return (
     <div className="overflow-hidden">
       <div className="flex w-max animate-marquee items-center gap-6">
-        {offset && <div className="w-[162px] shrink-0" aria-hidden="true" />}
+        {offset && <div className="w-[80px] shrink-0 sm:w-[162px]" aria-hidden="true" />}
         {[...reviews, ...reviews].map((review, index) => (
           <ReviewCard key={index} review={review} />
         ))}
@@ -99,15 +99,15 @@ function ReviewRow({
 
 export default function Reviews() {
   return (
-    <section aria-label="Customer reviews" className="bg-muted py-24">
-      <div className="mx-auto max-w-[75rem] px-6 text-center lg:px-8">
+    <section aria-label="Customer reviews" className="bg-muted py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-content px-6 text-center lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Reviews</p>
-        <h2 className="mt-3 text-[2.5rem] font-bold text-foreground">
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-[1.25] text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-[1.5]">
           Reviews from our customers
         </h2>
       </div>
 
-      <div className="mt-12 space-y-6">
+      <div className="mt-8 space-y-5 sm:mt-10 sm:space-y-6 lg:mt-12">
         <ReviewRow reviews={ROW1} />
         <ReviewRow reviews={ROW2} offset />
       </div>
