@@ -59,8 +59,6 @@ const TECH_STACK = [
   { name: "Java", src: "/icons/tech/java.svg", width: 86, height: 140 },
 ];
 
-const CARD_GAP = 24;
-
 export default function Projects() {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -68,9 +66,9 @@ export default function Projects() {
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
-    // The card width is responsive, so measure it instead of assuming 320px.
     const card = scroller.firstElementChild;
-    const step = (card?.getBoundingClientRect().width ?? 320) + CARD_GAP;
+    const gap = parseFloat(getComputedStyle(scroller).columnGap) || 0;
+    const step = (card?.getBoundingClientRect().width ?? 320) + gap;
 
     scroller.scrollBy({ left: direction * step, behavior: "smooth" });
   };
@@ -79,7 +77,7 @@ export default function Projects() {
     <section id="portfolio" aria-label="Our projects" className="bg-muted py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Portfolio</p>
-        <h2 className="mt-3 text-[1.875rem] font-bold leading-[1.25] text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.75rem] lg:leading-[1.5]">
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.75rem] lg:leading-normal">
           Our Projects
         </h2>
 
@@ -90,9 +88,9 @@ export default function Projects() {
           {PROJECTS.map((project) => (
             <article
               key={project.title}
-              className="w-[280px] shrink-0 snap-start rounded-xl border border-border bg-card shadow-sm sm:w-[320px]"
+              className="flex w-70 shrink-0 snap-start flex-col rounded-xl border border-border bg-card shadow-sm sm:w-[320px]"
             >
-              <div className="relative aspect-16/10 overflow-hidden rounded-t-xl bg-muted">
+              <div className="relative aspect-16/10 shrink-0 overflow-hidden rounded-t-xl bg-muted">
                 <Image
                   src={project.image}
                   alt={`${project.title} product screenshot`}
@@ -101,14 +99,14 @@ export default function Projects() {
                   sizes="(min-width: 640px) 320px, 280px"
                 />
               </div>
-              <div className="p-5 sm:p-6">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-xl font-bold text-foreground sm:text-2xl">
                   {project.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {project.description}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-auto flex flex-wrap gap-2 pt-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tag}

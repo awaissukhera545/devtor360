@@ -8,22 +8,26 @@ const REASONS: Reason[] = [
   {
     icon: "/icons/whyus-innovation.svg",
     title: "Innovation at its Core",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description:
+      "We pair emerging technology with proven engineering to keep you ahead of the curve.",
   },
   {
     icon: "/icons/whyus-tailored.svg",
     title: "Tailored Solutions",
-    description: "Dorem ipsum dolor sit amet, caonsectetur adipiscing elit",
+    description:
+      "Every build is shaped around your goals and workflows, never a reused template.",
   },
   {
     icon: "/icons/whyus-expert-team.svg",
     title: "Expert Team",
-    description: "Lorem ipsum dolor sit amet, coonsectetur adipiscing elit",
+    description:
+      "Senior engineers, designers, and strategists who have shipped products at scale.",
   },
   {
     icon: "/icons/whyus-client-centric.svg",
     title: "Client-Centric Approach",
-    description: "Dorem ipsum dolor sit amet, caonsectetur adipiscing elit",
+    description:
+      "Clear communication, honest timelines, and a partnership that outlasts launch day.",
   },
 ];
 
