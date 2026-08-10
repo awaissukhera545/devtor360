@@ -2,8 +2,8 @@ export default function GetQuote() {
   return (
     <section aria-label="Get a quote" className="py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 lg:px-8">
-        <div className="flex flex-col items-start gap-6 rounded-2xl bg-sky-gradient p-7 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:p-7">
-          <h2 className="max-w-6xl text-2xl font-medium text-white sm:text-3xl lg:text-5xl">
+        <div className="flex flex-col items-center sm:items-center md:items-center  gap-6 rounded-2xl  bg-sky-gradient p-7 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:p-7">
+          <h2 className="max-w-6xl text-2xl font-medium text-white sm:text-3xl lg:text-5xl text-center sm:text-center md:text-center lg:text-left">
             Just one click away to create a{' '}
             <br className="hidden lg:inline" />
             successful project
