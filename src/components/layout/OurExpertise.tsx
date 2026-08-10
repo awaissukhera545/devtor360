@@ -63,7 +63,7 @@ export default function OurExpertise() {
           {PILLARS.map((pillar) => (
             <div
               key={pillar.title}
-              className="rounded-2xl border border-slate-100 bg-white p-6 shadow-xs transition-shadow hover:shadow-md text-left flex flex-col items-start sm:p-7 lg:p-8"
+              className="rounded-2xl border border-slate-100 bg-white p-6 shadow-xs transition-shadow hover:shadow-md text-center flex flex-col items-center sm:p-7 lg:items-start lg:p-8 lg:text-left"
             >
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#e8f1ff] sm:h-16 sm:w-16">
                 <img src={pillar.icon} alt="" width={40} height={40} className="h-9 w-9 object-contain sm:h-10 sm:w-10" />

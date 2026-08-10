@@ -50,8 +50,8 @@ function ServiceCard({ service }: { service: Service }) {
     <div
       className={
         service.featured
-          ? "relative flex h-full flex-col rounded-xl border-2 border-brand-700 bg-card p-6 text-left shadow-sm sm:p-7 lg:p-8"
-          : "relative flex h-full flex-col rounded-xl border border-border bg-card p-6 text-left shadow-sm sm:p-7 lg:p-8"
+          ? "relative flex h-full flex-col items-center rounded-xl border-2 border-brand-700 bg-card p-6 text-center shadow-sm sm:p-7 lg:items-start lg:p-8 lg:text-left"
+          : "relative flex h-full flex-col items-center rounded-xl border border-border bg-card p-6 text-center shadow-sm sm:p-7 lg:items-start lg:p-8 lg:text-left"
       }
     >
       {/* Featured Text Badge on top of Border */}
@@ -64,7 +64,7 @@ function ServiceCard({ service }: { service: Service }) {
       <img
         src={service.icon}
         alt=""
-        className="h-14 w-auto self-start object-contain sm:h-16.5"
+        className="h-14 w-auto object-contain sm:h-16.5"
       />
       <h3 className="mt-5 text-xl font-bold text-foreground lg:mt-6">
         {service.title}
@@ -76,8 +76,8 @@ function ServiceCard({ service }: { service: Service }) {
         href="/contact"
         className={
           service.featured
-            ? "mt-auto inline-block self-start rounded-md bg-brand-700 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
-            : "mt-auto inline-block self-start rounded-md border border-border px-6 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+            ? "mt-auto inline-block rounded-md bg-brand-700 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-800"
+            : "mt-auto inline-block rounded-md border border-border px-6 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
         }
       >
         Get Quote

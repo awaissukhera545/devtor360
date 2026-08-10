@@ -98,7 +98,7 @@ export default function Industries() {
             return (
               <div
                 key={industry.title}
-                className={`rounded-xl border border-border bg-card p-5 text-left flex flex-col items-start sm:p-6 ${
+                className={`rounded-xl border border-border bg-card p-5 text-center flex flex-col items-center lg:items-start lg:text-left sm:p-6 ${
                   index === firstOfLastRow ? lastRowStart : ""
                 }`}
               >
@@ -107,7 +107,7 @@ export default function Industries() {
                   alt=""
                   width={70}
                   height={70}
-                  className="mr-auto h-14 w-14 sm:h-17.5 sm:w-17.5"
+                  className="h-14 w-14 sm:h-17.5 sm:w-17.5"
                 />
 
                 <h3 className="mt-4 text-lg font-bold text-foreground">
