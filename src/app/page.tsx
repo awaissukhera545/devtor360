@@ -9,6 +9,7 @@ import WhyChooseUs from "@/components/layout/WhyChooseUs";
 import Reviews from "@/components/layout/Reviews";
 import GetQuote from "@/components/layout/GetQuote";
 import FAQs from "@/components/layout/FAQs";
+import TechStack from "@/components/layout/TechStack";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <OurExpertise />
       <Industries />
       <Projects />
+      <TechStack />
       <WhyChooseUs />
       <Reviews />
       <GetQuote />

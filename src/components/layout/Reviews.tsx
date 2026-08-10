@@ -57,7 +57,7 @@ const ROW2 = REVIEWS.slice(3);
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="w-[260px] shrink-0 rounded-xl border border-border bg-card p-5 text-left shadow-sm sm:w-[300px] sm:p-6">
+    <article className="w-65 shrink-0 rounded-xl border border-border bg-card p-5 text-left shadow-sm sm:w-75 sm:p-6">
       <div className="flex items-center gap-3">
         <Image
           src={review.avatar}
@@ -88,7 +88,7 @@ function ReviewRow({
   return (
     <div
       className={`overflow-hidden ${
-        offset ? "-translate-x-[80px] sm:-translate-x-[162px]" : ""
+        offset ? "-translate-x-20 sm:-translate-x-40.5" : ""
       }`}
     >
       <div className="flex w-max animate-marquee items-center gap-6">
@@ -105,7 +105,7 @@ export default function Reviews() {
     <section aria-label="Customer reviews" className="bg-muted py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 text-center lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Reviews</p>
-        <h2 className="mt-3 text-[1.875rem] font-bold leading-[1.25] text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-[1.5]">
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-normal">
           Reviews from our customers
         </h2>
       </div>

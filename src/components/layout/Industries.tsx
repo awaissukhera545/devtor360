@@ -69,8 +69,6 @@ const INDUSTRIES: Industry[] = [
 
 const LG_COLUMNS = 4;
 
-// Tailwind only emits classes it can read as literals, so the options are listed
-// out rather than built with a template string.
 const COL_START = [
   "lg:col-start-1",
   "lg:col-start-2",
@@ -79,8 +77,6 @@ const COL_START = [
 ];
 
 export default function Industries() {
-  // Centre whatever is left over on the final row. Placing only its first card is
-  // enough — grid auto-placement carries the rest of the row along from there.
   const leftover = INDUSTRIES.length % LG_COLUMNS;
   const firstOfLastRow = leftover === 0 ? -1 : INDUSTRIES.length - leftover;
   const lastRowStart = COL_START[Math.floor((LG_COLUMNS - leftover) / 2)];
@@ -102,7 +98,7 @@ export default function Industries() {
             return (
               <div
                 key={industry.title}
-                className={`rounded-xl border border-border bg-card p-5 text-center flex flex-col items-center sm:p-6 ${
+                className={`rounded-xl border border-border bg-card p-5 text-left flex flex-col items-start sm:p-6 ${
                   index === firstOfLastRow ? lastRowStart : ""
                 }`}
               >
@@ -111,7 +107,7 @@ export default function Industries() {
                   alt=""
                   width={70}
                   height={70}
-                  className="mx-auto h-14 w-14 sm:h-17.5 sm:w-17.5"
+                  className="mr-auto h-14 w-14 sm:h-17.5 sm:w-17.5"
                 />
 
                 <h3 className="mt-4 text-lg font-bold text-foreground">

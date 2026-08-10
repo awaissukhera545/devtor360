@@ -47,8 +47,25 @@ const SERVICES: Service[] = [
 
 function ServiceCard({ service }: { service: Service }) {
   return (
-    <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6 text-left shadow-sm sm:p-7 lg:p-8">
-      <img src={service.icon} alt="" className="h-14 w-auto self-start object-contain sm:h-16.5" />
+    <div
+      className={
+        service.featured
+          ? "relative flex h-full flex-col rounded-xl border-2 border-brand-700 bg-card p-6 text-left shadow-sm sm:p-7 lg:p-8"
+          : "relative flex h-full flex-col rounded-xl border border-border bg-card p-6 text-left shadow-sm sm:p-7 lg:p-8"
+      }
+    >
+      {/* Featured Text Badge on top of Border */}
+      {service.featured && (
+        <span className="absolute top-0 right-1/4 -translate-y-1/2 translate-x-1/2 bg-card px-2 text-xs font-bold uppercase tracking-wider text-brand-700 select-none">
+          Featured
+        </span>
+      )}
+
+      <img
+        src={service.icon}
+        alt=""
+        className="h-14 w-auto self-start object-contain sm:h-16.5"
+      />
       <h3 className="mt-5 text-xl font-bold text-foreground lg:mt-6">
         {service.title}
       </h3>
@@ -71,7 +88,11 @@ function ServiceCard({ service }: { service: Service }) {
 
 export default function Services() {
   return (
-    <section id="services" aria-label="Our services" className="py-16 sm:py-20 lg:py-24">
+    <section
+      id="services"
+      aria-label="Our services"
+      className="py-16 sm:py-20 lg:py-24"
+    >
       <div className="mx-auto max-w-content px-6 text-center lg:px-8">
         <p className="text-eyebrow uppercase text-primary">Our Services</p>
         <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-normal">

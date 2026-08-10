@@ -48,17 +48,6 @@ const TAG_STYLES: Record<number, string> = {
   2: "bg-brand-100 text-brand-700",
 };
 
-const TECH_STACK = [
-  { name: "Ionic", src: "/icons/tech/ionic.svg", width: 222, height: 140 },
-  { name: "Python", src: "/icons/tech/python.svg", width: 313, height: 140 },
-  { name: "Photoshop", src: "/icons/tech/photoshop.svg", width: 105, height: 140 },
-  { name: "Node.js", src: "/icons/tech/nodejs.svg", width: 254, height: 140 },
-  { name: "Swift", src: "/icons/tech/swift.svg", width: 255, height: 140 },
-  { name: "Illustrator", src: "/icons/tech/illustrator.svg", width: 112, height: 140 },
-  { name: "Google Cloud", src: "/icons/tech/google-cloud.svg", width: 375, height: 140 },
-  { name: "Java", src: "/icons/tech/java.svg", width: 86, height: 140 },
-];
-
 export default function Projects() {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -140,21 +129,6 @@ export default function Projects() {
           >
             <ArrowRight size={18} />
           </button>
-        </div>
-      </div>
-
-      <div className="mt-14 overflow-hidden bg-subtle sm:mt-16 lg:mt-20">
-        <div className="flex w-max animate-marquee items-center gap-10 py-7 sm:gap-12 sm:py-8 lg:gap-16 lg:py-10">
-          {[...TECH_STACK, ...TECH_STACK].map((tech, index) => (
-            <Image
-              key={`${tech.name}-${index}`}
-              src={tech.src}
-              alt={tech.name}
-              width={tech.width}
-              height={tech.height}
-              className="h-12 w-auto shrink-0 opacity-70 sm:h-14 lg:h-17.5"
-            />
-          ))}
         </div>
       </div>
     </section>
