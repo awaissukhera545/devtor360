@@ -44,19 +44,18 @@ export default function OurExpertise() {
               Why Choose Us for Your Next Big <br className="hidden lg:block"/> Project?
             </h2>
           </div>
-          <div className="w-full flex flex-col items-center lg:w-1/2">
-            <p className="text-base leading-relaxed text-center sm:text-center md:text-center lg:text-left text-muted-foreground sm:text-lg lg:text-xl">
-              Unlock your business&apos;s potential with Devtor360&apos;s
-              expert development and design. Craft impactful solutions and
-              designs that resonate with your audience.
-            </p>
-            <a
-              href="/contact"
-              className="mt-6 inline-block justify-center sm:justify-start md:justify-start lg:justify-start rounded-md border border-primary px-6 py-2.5 text-base font-semibold text-primary transition-colors hover:bg-accent"
-            >
-              Contact Us
-            </a>
-          </div>
+          <div className="w-full flex flex-col items-center lg:items-start lg:w-1/2">
+  <p className="text-base leading-relaxed text-center sm:text-center md:text-center lg:text-left text-muted-foreground sm:text-lg lg:text-xl">
+    Unlock your business&apos;s potential with Devtor360&apos;s expert development and design. Craft impactful solutions and designs that resonate with your audience.
+  </p>
+  <a 
+    href="/contact" 
+    className="mt-6 inline-block rounded-md border border-primary px-6 py-2.5 text-base font-semibold text-primary transition-colors hover:bg-accent"
+  >
+    Contact Us
+  </a>
+</div>
+
         </div>
 
         <div className="mt-10 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
