@@ -54,7 +54,6 @@ function ServiceCard({ service }: { service: Service }) {
           : "relative flex h-full flex-col items-center rounded-xl border border-border bg-card p-6 text-center shadow-sm sm:p-7 lg:items-start lg:p-8 lg:text-left"
       }
     >
-      {/* Featured Text Badge on top of Border */}
       {service.featured && (
         <span className="absolute top-0 right-1/4 -translate-y-1/2 translate-x-1/2 bg-card px-2 text-xs font-bold uppercase tracking-wider text-brand-700 select-none">
           Featured

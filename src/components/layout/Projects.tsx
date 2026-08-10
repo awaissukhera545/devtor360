@@ -65,8 +65,8 @@ export default function Projects() {
   return (
     <section id="portfolio" aria-label="Our projects" className="bg-muted py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 lg:px-8">
-        <p className="text-eyebrow uppercase text-primary">Portfolio</p>
-        <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.75rem] lg:leading-normal">
+        <p className="text-eyebrow uppercase text-primary text-center sm:text-left md:text-left lg:text-left">Portfolio</p>
+        <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground text-center sm:text-left md:text-left lg:text-left sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.75rem] lg:leading-normal">
           Our Projects
         </h2>
 

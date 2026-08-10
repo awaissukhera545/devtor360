@@ -37,8 +37,8 @@ export default function WhyChooseUs() {
       <div className="mx-auto max-w-content px-6 lg:px-8">
         <div className="grid gap-8 rounded-2xl border-b-4 border-navy-700 bg-card p-6 shadow-md sm:p-8 lg:grid-cols-[1fr_2fr] lg:items-center lg:gap-10 lg:p-12">
           <div>
-            <p className="text-eyebrow uppercase text-primary">Why Us</p>
-            <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] lg:text-[2.75rem]">
+            <p className="text-eyebrow uppercase text-primary text-center sm:text-left md:text-left lg:text-left">Why Us</p>
+            <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground text-center sm:text-left md:text-left lg:text-left sm:text-[2.25rem] lg:text-[2.75rem]">
               Why Choose Devtor360 for Your Project
             </h2>
           </div>

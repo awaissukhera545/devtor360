@@ -12,7 +12,7 @@ const SERVICES = [
 const SOCIAL_LINKS = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/company/devtor360",
+    href: "https://linkedin.com/company/devtor360",
     path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.15c0-1.47-.03-3.36-2.05-3.36-2.06 0-2.37 1.6-2.37 3.26V21h-4V9Z",
   },
   {
@@ -39,10 +39,11 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-dark-foreground">
-      <div className="mx-auto grid max-w-content gap-10 px-6 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-12 lg:px-8 lg:py-16">
-        <div>
-          <div className="relative h-10 w-40 flex items-center gap-2 sm:h-12 sm:w-48">
+    <footer className="bg-dark text-dark-foreground text-center md:text-left">
+      <div className="mx-auto grid max-w-content gap-10 px-6 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-12 lg:px-8 lg:py-16 justify-items-center md:justify-items-start">
+        {/* Column 1 */}
+        <div className="flex flex-col items-center md:items-start">
+          <div className="relative h-10 w-40 flex items-center justify-center gap-2 sm:h-12 sm:w-48">
             <Image
               src="/devtor360-light.svg"
               alt="Devtor360-logo"
@@ -51,21 +52,22 @@ export default function Footer() {
             />
           </div>
 
-          <p className="mt-4 mb-8 max-w-xs text-sm leading-relaxed text-white/70 lg:mb-10">
+          <p className="mt-4 mb-8 max-w-xs text-sm leading-relaxed text-white/70">
             Say goodbye to long development cycles and save time, money, and
             opportunity cost with Devtor360.
           </p>
           <div>
             <a
               href="/contact"
-              className="rounded-md border border-primary bg-accent text-brand-700 px-7 py-3.5 text-base font-semibold transition-colors hover:bg-brand-100"
+              className="inline-block rounded-md border border-primary bg-accent text-brand-700 px-7 py-3.5 text-base font-semibold transition-colors hover:bg-brand-100"
             >
               Contact Us
             </a>
           </div>
         </div>
 
-        <div>
+        {/* Column 2 */}
+        <div className="flex flex-col items-center md:items-start">
           <h3 className="text-xl font-bold text-white sm:text-2xl">Services</h3>
           <ul className="mt-4 space-y-3 text-base text-white/70 sm:text-lg">
             {SERVICES.map((service) => (
@@ -74,14 +76,15 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        {/* Column 3 */}
+        <div className="flex flex-col items-center md:items-start">
           <h3 className="text-xl font-bold text-white sm:text-2xl lg:text-3xl">
             Available For Help
           </h3>
           <p className="mt-4 text-sm text-white/70">
             24 Hours A Day &ndash; 5 Days A Week
           </p>
-          <div className="mt-4 space-y-3 text-base sm:text-lg">
+          <div className="mt-4 space-y-3 text-base sm:text-lg flex flex-col items-center md:items-start">
             <a
               href="mailto:info@devtor360.com"
               className="flex items-center gap-3 text-white/90 hover:text-white"
@@ -104,6 +107,7 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-content flex-col items-center gap-5 px-6 py-6 text-center text-sm text-white/70 md:flex-row md:justify-between md:gap-4 md:text-left lg:px-8">
           <p>&copy; devtor360 Inc. {new Date().getFullYear()}. All rights reserved.</p>
