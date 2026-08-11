@@ -37,25 +37,24 @@ export default function OurExpertise() {
       <div className="mx-auto max-w-content px-6 lg:px-8">
         <div className="flex flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end">
           <div className="w-full lg:w-1/2">
-            <p className="text-eyebrow uppercase text-center sm:text-center md:text-center lg:text-left text-primary">
+            <p className="text-center text-eyebrow uppercase text-primary lg:text-left">
               Our Expertise
             </p>
-            <h2 className="mt-3 max-w-xl text-[2rem] font-bold text-center sm:text-center md:text-center lg:text-left leading-tight text-foreground sm:text-[2.5rem] lg:text-display">
-              Why Choose Us for Your Next Big <br className="hidden lg:block"/> Project?
+            <h2 className="mx-auto mt-3 max-w-xl text-center text-[2rem] font-bold leading-tight text-foreground sm:text-[2.5rem] lg:mx-0 lg:text-left lg:text-display">
+              Why Choose Us for Your Next Big <br className="hidden lg:block" /> Project?
             </h2>
           </div>
-          <div className="w-full flex flex-col items-center lg:items-start lg:w-1/2">
-  <p className="text-base leading-relaxed text-center sm:text-center md:text-center lg:text-left text-muted-foreground sm:text-lg lg:text-xl">
-    Unlock your business&apos;s potential with Devtor360&apos;s expert development and design. Craft impactful solutions and designs that resonate with your audience.
-  </p>
-  <a 
-    href="/contact" 
-    className="mt-6 inline-block rounded-md border border-primary px-6 py-2.5 text-base font-semibold text-primary transition-colors hover:bg-accent"
-  >
-    Contact Us
-  </a>
-</div>
-
+          <div className="flex w-full flex-col items-center lg:w-1/2 lg:items-start">
+            <p className="text-center text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-left lg:text-xl">
+              Unlock your business&apos;s potential with Devtor360&apos;s expert development and design. Craft impactful solutions and designs that resonate with your audience.
+            </p>
+            <a
+              href="/contact"
+              className="mt-6 inline-block rounded-md border border-primary px-6 py-2.5 text-base font-semibold text-primary transition-colors hover:bg-accent"
+            >
+              Contact Us
+            </a>
+          </div>
         </div>
 
         <div className="mt-10 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">

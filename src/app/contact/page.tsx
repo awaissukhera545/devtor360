@@ -85,11 +85,11 @@ export default function Contact() {
         <div className="mx-auto max-w-content px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start lg:gap-12">
             <div>
-              <p className="text-eyebrow uppercase text-primary text-center sm:text-center md:text-center lg:text-left">Get In Touch</p>
-              <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] lg:text-[2.5rem]">
+              <p className="text-center text-eyebrow uppercase text-primary lg:text-left">Get In Touch</p>
+              <h2 className="mt-3 text-center text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] lg:text-left lg:text-[2.5rem]">
                 Talk to a Real Human
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-center text-base leading-relaxed text-muted-foreground lg:text-left">
                 Whether you need a full product team or a second opinion on an
                 existing build, we are happy to help you figure out the next
                 step.

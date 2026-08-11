@@ -65,8 +65,8 @@ export default function Projects() {
   return (
     <section id="portfolio" aria-label="Our projects" className="bg-muted py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-content px-6 lg:px-8">
-        <p className="text-eyebrow uppercase text-primary text-center sm:text-center md:text-center lg:text-left">Portfolio</p>
-        <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground text-center sm:text-center md:text-center lg:text-left sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.75rem] lg:leading-normal">
+        <p className="text-eyebrow uppercase text-primary text-center lg:text-left">Portfolio</p>
+        <h2 className="mt-3 text-center text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-left lg:text-[2.75rem] lg:leading-normal">
           Our Projects
         </h2>
 
@@ -112,7 +112,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-6 flex gap-3">
+        <div className="mt-6 flex justify-center gap-3 lg:justify-start">
           <button
             type="button"
             onClick={() => goTo(-1)}

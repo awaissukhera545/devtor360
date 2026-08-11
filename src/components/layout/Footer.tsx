@@ -39,11 +39,11 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-dark-foreground text-center md:text-left">
-      <div className="mx-auto grid max-w-content gap-10 px-6 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-12 lg:px-8 lg:py-16 justify-items-center md:justify-items-start">
+    <footer className="bg-dark text-center text-dark-foreground lg:text-left">
+      <div className="mx-auto grid max-w-content justify-items-center gap-10 px-6 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-[1.3fr_1fr_1fr] lg:justify-items-start lg:gap-12 lg:px-8 lg:py-16">
         {/* Column 1 */}
-        <div className="flex flex-col items-center md:items-start">
-          <div className="relative h-10 w-40 flex items-center justify-center gap-2 sm:h-12 sm:w-48">
+        <div className="flex flex-col items-center lg:items-start">
+          <div className="relative h-10 w-40 sm:h-12 sm:w-48">
             <Image
               src="/devtor360-light.svg"
               alt="Devtor360-logo"
@@ -56,18 +56,16 @@ export default function Footer() {
             Say goodbye to long development cycles and save time, money, and
             opportunity cost with Devtor360.
           </p>
-          <div>
-            <a
-              href="/contact"
-              className="inline-block rounded-md border border-primary bg-accent text-brand-700 px-7 py-3.5 text-base font-semibold transition-colors hover:bg-brand-100"
-            >
-              Contact Us
-            </a>
-          </div>
+          <a
+            href="/contact"
+            className="inline-block rounded-md border border-primary bg-accent px-7 py-3.5 text-base font-semibold text-brand-700 transition-colors hover:bg-brand-100"
+          >
+            Contact Us
+          </a>
         </div>
 
         {/* Column 2 */}
-        <div className="flex flex-col items-center md:items-start">
+        <div className="flex flex-col items-center lg:items-start">
           <h3 className="text-xl font-bold text-white sm:text-2xl">Services</h3>
           <ul className="mt-4 space-y-3 text-base text-white/70 sm:text-lg">
             {SERVICES.map((service) => (
@@ -77,14 +75,14 @@ export default function Footer() {
         </div>
 
         {/* Column 3 */}
-        <div className="flex flex-col items-center md:items-start">
+        <div className="flex flex-col items-center lg:items-start">
           <h3 className="text-xl font-bold text-white sm:text-2xl lg:text-3xl">
             Available For Help
           </h3>
           <p className="mt-4 text-sm text-white/70">
             24 Hours A Day &ndash; 5 Days A Week
           </p>
-          <div className="mt-4 space-y-3 text-base sm:text-lg flex flex-col items-center md:items-start">
+          <div className="mt-4 flex flex-col items-center space-y-3 text-base sm:text-lg lg:items-start">
             <a
               href="mailto:info@devtor360.com"
               className="flex items-center gap-3 text-white/90 hover:text-white"
@@ -109,7 +107,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-content flex-col items-center gap-5 px-6 py-6 text-center text-sm text-white/70 md:flex-row md:justify-between md:gap-4 md:text-left lg:px-8">
+        <div className="mx-auto flex max-w-content flex-col items-center gap-5 px-6 py-6 text-center text-sm text-white/70 lg:flex-row lg:justify-between lg:gap-4 lg:px-8 lg:text-left">
           <p>&copy; devtor360 Inc. {new Date().getFullYear()}. All rights reserved.</p>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
             <a href="/terms_and_conditions" className="py-1.5 hover:text-white">
