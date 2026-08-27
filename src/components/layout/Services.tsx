@@ -43,7 +43,7 @@ export default function Services() {
           </div>
 
           {/* ── Service Tabs Navigation ────────────────────────────────── */}
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 justify-items-end">
             {services.map((item) => {
               const isSelected = item.id === selectedId;
               const Icon = ICON_MAP[item.id] || Code2;
@@ -52,7 +52,7 @@ export default function Services() {
                   key={item.id}
                   type="button"
                   onClick={() => setSelectedId(item.id)}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all duration-200 ${
+                  className={`inline-flex w-full items-center justify-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-all duration-200 ${
                     isSelected
                       ? "bg-primary text-primary-foreground shadow-brand"
                       : "border border-border bg-white text-muted-foreground hover:border-primary hover:text-foreground"

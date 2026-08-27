@@ -162,6 +162,33 @@ export const SERVICES_SECTION_DATA = {
       ],
     },
     {
+      id: "cyber-security",
+      tabLabel: "Cybersecurity",
+      badge: "Security & Compliance",
+      title: "Cybersecurity & Application Security",
+      headline: "Harden your software against threats — before attackers find the gaps.",
+      description:
+        "We deliver end-to-end cybersecurity services for web applications, APIs, and cloud infrastructure. From penetration testing and secure code reviews to compliance frameworks and real-time threat monitoring, we protect what matters most to your business.",
+      deliverables: [
+        "Penetration testing & vulnerability assessments",
+        "Secure code review & OWASP Top 10 remediation",
+        "Zero-trust architecture & identity access management",
+        "SOC 2, ISO 27001 & GDPR compliance consulting",
+      ],
+      features: [
+        "Real-time intrusion detection & threat response",
+        "End-to-end encryption & secrets management",
+        "Automated SAST/DAST in CI/CD pipelines",
+        "24/7 security monitoring & incident response",
+      ],
+      techStack: ["OWASP ZAP", "Burp Suite", "Snyk", "HashiCorp Vault", "AWS Shield", "Cloudflare WAF"],
+      metrics: [
+        { label: "Vulnerabilities Found", value: "500+" },
+        { label: "Mean Time to Detect", value: "< 2 min" },
+        { label: "Compliance Rate", value: "100%" },
+      ],
+    },
+    {
       id: "ai-systems",
       tabLabel: "AI & Machine Learning",
       badge: "Smart Automation",
@@ -278,7 +305,10 @@ export const CAPABILITIES = SERVICES_DATA;
 
 // ─── 6. Industries ───────────────────────────────────────────────────────────
 
-export type IndustryCategory = "Technology" | "Commerce" | "Health & Finance" | "Hospitality";
+
+// --- 6. Industries ---
+
+export type IndustryCategory = 'Technology' | 'Commerce' | 'Health & Finance' | 'Hospitality';
 
 export type IndustryItem = {
   icon: string;
@@ -286,137 +316,71 @@ export type IndustryItem = {
   description: string;
   category: IndustryCategory;
   metric: string;
+  slug: string;
+};
+
+export type CaseStudyResult = { label: string; value: string };
+
+export type CaseStudy = {
+  slug: string;
+  industry: string;
+  category: IndustryCategory;
+  icon: string;
+  metric: string;
+  client: string;
+  overview: string;
+  challenge: string;
+  solution: string;
+  deliverables: string[];
+  techStack: string[];
+  results: CaseStudyResult[];
+  testimonial: { quote: string; author: string; role: string };
+};
+
+export const CASE_STUDIES: Record<string, CaseStudy> = {
+  'edtech-education': { slug: 'edtech-education', industry: 'EdTech & Education', category: 'Technology', icon: '/icons/industries/edtech.svg', metric: '100K+ Learners', client: 'EduNova Global', overview: 'EduNova Global needed a scalable e-learning platform to serve 100,000+ concurrent learners across 40 countries with real-time video, adaptive assessments, and progress analytics.', challenge: 'Their existing LMS crashed during peak hours, had no mobile support, and could not handle multi-language content, causing a 28% student churn rate.', solution: 'We engineered a cloud-native LMS on Next.js with WebRTC-powered virtual classrooms, AI-driven adaptive quiz engines, and a multi-tenant architecture.', deliverables: ['Multi-tenant LMS with per-institution white-labeling', 'Live virtual classroom engine (WebRTC + HLS fallback)', 'AI-powered adaptive quiz and assessment module', 'Student progress analytics dashboard', 'Mobile apps for iOS and Android (React Native)', 'Multi-language content system (12 languages)'], techStack: ['Next.js', 'TypeScript', 'WebRTC', 'AWS', 'PostgreSQL', 'React Native', 'OpenAI API'], results: [{ label: 'Active Learners', value: '100K+' }, { label: 'Platform Uptime', value: '99.98%' }, { label: 'Student Churn', value: '-28%' }, { label: 'Completion Rate', value: '+41%' }], testimonial: { quote: 'Devtor360 transformed our outdated LMS into a world-class platform. Student retention improved dramatically in the first month.', author: 'Sarah Mitchell', role: 'CTO, EduNova Global' } },
+  'web3-blockchain': { slug: 'web3-blockchain', industry: 'Web3 & Blockchain', category: 'Technology', icon: '/icons/industries/blockchain.svg', metric: 'Audited Code', client: 'ChainVault Protocol', overview: 'ChainVault Protocol required a secure DeFi platform with audited smart contracts, a non-custodial multi-chain wallet, and real-time on-chain analytics.', challenge: 'Previous contractors delivered unaudited contracts with critical re-entrancy vulnerabilities. The team needed a fully audited, gas-optimized, multi-chain system.', solution: 'We rebuilt the protocol layer in Solidity with formal verification, integrated Chainlink oracles, and delivered a React dApp with hardware wallet support.', deliverables: ['Audited Solidity smart contracts (ERC-20, ERC-721, custom)', 'Non-custodial multi-chain wallet (Ethereum, Polygon, BSC)', 'Chainlink oracle integrations for price feeds', 'On-chain analytics and portfolio dashboard', 'REST and GraphQL developer API gateway', 'Hardware wallet support (Ledger, Trezor)'], techStack: ['Solidity', 'Hardhat', 'Ethers.js', 'React', 'The Graph', 'Chainlink', 'IPFS'], results: [{ label: 'Contracts Audited', value: '100%' }, { label: 'Gas Optimisation', value: '-38%' }, { label: 'TVL at Launch', value: '$4.2M' }, { label: 'Security Issues', value: '0' }], testimonial: { quote: 'The smart contracts passed a Tier-1 audit on the first attempt. Devtor360 attention to security is unmatched in Web3.', author: 'Alex Reyes', role: 'Founder, ChainVault Protocol' } },
+  'ai-intelligent-systems': { slug: 'ai-intelligent-systems', industry: 'AI & Intelligent Systems', category: 'Technology', icon: '/icons/expertise-custom-development.svg', metric: 'Sub-15ms Latency', client: 'NeuralEdge Analytics', overview: 'NeuralEdge needed a production-grade AI inference platform for real-time recommendations, document intelligence, and intent prediction at sub-15ms latency.', challenge: 'Off-the-shelf AI APIs were too slow and expensive at scale, and could not be fine-tuned on proprietary data.', solution: 'We built a self-hosted LLM inference pipeline on AWS using fine-tuned models, RAG retrieval with Pinecone, and a unified API integrated into their SaaS suite.', deliverables: ['Custom fine-tuned LLM on proprietary dataset', 'RAG document retrieval system (Pinecone + embeddings)', 'Real-time product recommendation engine', 'Customer intent prediction pipeline', 'Unified AI API gateway with rate limiting', 'Model monitoring and drift detection dashboard'], techStack: ['Python', 'FastAPI', 'PyTorch', 'Pinecone', 'LangChain', 'AWS SageMaker', 'Redis'], results: [{ label: 'Inference Latency', value: '<15ms' }, { label: 'Recommendation CTR', value: '+52%' }, { label: 'Cost vs GPT-4', value: '-74%' }, { label: 'Model Accuracy', value: '99.4%' }], testimonial: { quote: 'We went from 800ms API latency to under 15ms and customers immediately noticed.', author: 'Dr. Priya Nair', role: 'Head of AI, NeuralEdge Analytics' } },
+  'cloud-devops-infrastructure': { slug: 'cloud-devops-infrastructure', industry: 'Cloud & DevOps Infrastructure', category: 'Technology', icon: '/icons/industries/cloud-infra.svg', metric: '99.99% Uptime', client: 'Orbix SaaS', overview: 'Orbix SaaS experienced frequent outages and 40-minute manual deployments with zero observability and needed a complete infrastructure overhaul for 300% YoY growth.', challenge: 'A monolithic deployment on a single VPS, no CI/CD, no staging, manual database backups, and zero monitoring threatened enterprise contracts.', solution: 'We migrated to containerized multi-region AWS architecture with Terraform IaC, zero-downtime CI/CD, and Prometheus/Grafana observability.', deliverables: ['Multi-region AWS infrastructure (EKS + RDS Multi-AZ)', 'Terraform Infrastructure-as-Code modules', 'Zero-downtime CI/CD pipelines (GitHub Actions)', 'Prometheus + Grafana observability stack', 'Automated database backups and disaster recovery', 'Security hardening and SOC2 compliance controls'], techStack: ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'GitHub Actions', 'Prometheus', 'Grafana'], results: [{ label: 'Uptime', value: '99.99%' }, { label: 'Deploy Time', value: '< 2 min' }, { label: 'Incident MTTR', value: '-85%' }, { label: 'Infra Cost', value: '-32%' }], testimonial: { quote: 'We went from dreading every release to deploying 12 times a day with full confidence.', author: 'Tom Hargreaves', role: 'VP Engineering, Orbix SaaS' } },
+  'retail-ecommerce': { slug: 'retail-ecommerce', industry: 'Retail & E-Commerce', category: 'Commerce', icon: '/icons/industries/retail-tech.svg', metric: '+34% Conversion', client: 'LuxCart Retail', overview: 'LuxCart needed to replace their Magento store with a headless commerce platform handling 50,000 concurrent shoppers during flash sales.', challenge: 'Their Magento store loaded in 8+ seconds and had cart abandonment above 78% due to poor mobile experience and no personalisation.', solution: 'We built a headless Next.js plus Shopify platform with AI recommendations, one-tap checkout, and real-time inventory management.', deliverables: ['Headless Next.js storefront with Shopify backend', 'AI-powered product recommendations engine', 'One-tap checkout with Apple Pay and Google Pay', 'Real-time inventory and order management dashboard', 'Loyalty points and rewards programme module', 'Multi-currency and multi-language support'], techStack: ['Next.js', 'Shopify Storefront API', 'TypeScript', 'Tailwind CSS', 'Algolia', 'Stripe'], results: [{ label: 'Conversion Rate', value: '+34%' }, { label: 'Page Load', value: '0.8s' }, { label: 'Cart Abandon', value: '-41%' }, { label: 'Revenue Uplift', value: '+$2.1M' }], testimonial: { quote: 'Our Black Friday revenue broke records. The platform handled 50,000 concurrent users without a hiccup.', author: 'Natalie Brooks', role: 'CEO, LuxCart Retail' } },
+  'autotech-telematics': { slug: 'autotech-telematics', industry: 'AutoTech & Telematics', category: 'Commerce', icon: '/icons/industries/autotech.svg', metric: '10K+ Nodes', client: 'FleetPulse Technologies', overview: 'FleetPulse manages 10,000+ vehicles across 18 countries and needed a unified telematics platform with real-time GPS, predictive maintenance, and driver behaviour scoring.', challenge: 'Data from five IoT hardware vendors was siloed. Fleet managers operated on 4-hour-old data causing breakdowns and compliance violations.', solution: 'We built a unified IoT pipeline processing 1M+ events per minute, real-time GPS tracking, AI predictive maintenance, and a white-label fleet dashboard.', deliverables: ['Unified IoT gateway supporting 5 hardware protocols', 'Real-time GPS tracking map (10K+ concurrent nodes)', 'AI predictive maintenance and fault detection', 'Driver behaviour scoring and coaching module', 'White-label multi-tenant fleet dashboard', 'Automated compliance reporting'], techStack: ['Node.js', 'Kafka', 'TimescaleDB', 'React', 'Mapbox', 'Python', 'AWS IoT Core'], results: [{ label: 'Active Nodes', value: '10K+' }, { label: 'Data Latency', value: '<500ms' }, { label: 'Breakdowns', value: '-63%' }, { label: 'Fuel Savings', value: '18%' }], testimonial: { quote: 'Real-time visibility across our fleet has been transformative. Breakdowns dropped by 63% in the first quarter.', author: 'Carlos Mendez', role: 'CTO, FleetPulse Technologies' } },
+  'fmcg-consumer-goods': { slug: 'fmcg-consumer-goods', industry: 'FMCG & Consumer Goods', category: 'Commerce', icon: '/icons/industries/fmcg.svg', metric: '500K+ SKUs', client: 'PrimeBrands FMCG', overview: 'PrimeBrands distributes 500,000+ SKUs across 12 wholesale channels and 3 D2C brands and needed a unified commerce hub for B2B ordering, storefronts, and distributor portals.', challenge: 'Managing 500K+ SKUs across disconnected systems caused inventory discrepancies, delayed fulfilment, and price inconsistencies.', solution: 'We built a multi-channel commerce hub with a unified catalogue, B2B portal with volume pricing, three D2C storefronts, and real-time ERP sync.', deliverables: ['Unified product catalogue with 500K+ SKU management', 'B2B wholesale portal with tiered pricing engine', 'Three branded D2C storefronts', 'Real-time ERP and WMS integration (SAP, Oracle)', 'Automated purchase order and invoice generation', 'Distributor performance analytics dashboard'], techStack: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'SAP API', 'Stripe', 'AWS'], results: [{ label: 'SKUs Managed', value: '500K+' }, { label: 'Order Errors', value: '-91%' }, { label: 'B2B Revenue', value: '+28%' }, { label: 'Fulfilment Time', value: '-44%' }], testimonial: { quote: 'Consolidating our B2B and D2C operations saved us hundreds of hours a week. Order errors are virtually zero.', author: 'Hamid Al-Rashid', role: 'COO, PrimeBrands FMCG' } },
+  'agritech-supply-chain': { slug: 'agritech-supply-chain', industry: 'AgriTech & Supply Chain', category: 'Commerce', icon: '/icons/industries/agr-tech.svg', metric: '40% Fast Logistics', client: 'GrainRoute Logistics', overview: 'GrainRoute connects 2,000+ farms to 500+ buyers across South Asia and needed digital yield forecasting, AI procurement matching, and blockchain-traced logistics.', challenge: 'Manual phone coordination caused 3-day delays, no buyer traceability, inaccurate yield data, and payment disputes costing farmers 22% of revenue.', solution: 'We built a farm-to-buyer marketplace with satellite yield forecasting, AI procurement matching, blockchain provenance, and 24-hour payment disbursement.', deliverables: ['Farm-to-buyer digital marketplace', 'Satellite and IoT-based yield forecasting', 'AI procurement matching engine', 'Blockchain provenance tracking for produce batches', 'Automated payment disbursement system', 'Mobile app for farmers (offline-first, 4 languages)'], techStack: ['React Native', 'Python', 'FastAPI', 'PostgreSQL', 'Hyperledger Fabric', 'AWS', 'Satellite APIs'], results: [{ label: 'Logistics Speed', value: '+40%' }, { label: 'Farmer Revenue', value: '+22%' }, { label: 'Procurement Time', value: '3d to 4h' }, { label: 'Dispute Rate', value: '-97%' }], testimonial: { quote: 'The platform gave our farmers fair prices and same-day payments. Blockchain traceability won us premium buyers.', author: 'Ravi Shankar', role: 'Founder, GrainRoute Logistics' } },
+  'healthtech-medtech': { slug: 'healthtech-medtech', industry: 'HealthTech & MedTech', category: 'Health & Finance', icon: '/icons/industries/health-tech.svg', metric: 'HIPAA Compliant', client: 'MediConnect Health', overview: 'MediConnect needed a HIPAA-compliant telehealth platform connecting 800+ specialist physicians with patients across 5 US states, with secure video, e-prescriptions, and an EHR.', challenge: 'Using Zoom created HIPAA violations. Patient records were in spreadsheets, e-prescriptions required fax machines, and billing was entirely manual.', solution: 'We built a HIPAA-compliant telehealth platform with E2E encrypted video, integrated EHR, digital e-prescriptions with pharmacy routing, and automated insurance billing.', deliverables: ['HIPAA-compliant E2E encrypted video consultation', 'Integrated EHR system with patient history', 'Digital e-prescription with pharmacy routing', 'Automated insurance billing and claims management', 'Patient portal with appointment scheduling', 'Physician dashboard with AI diagnostic support'], techStack: ['Next.js', 'Node.js', 'WebRTC', 'PostgreSQL', 'AWS HealthLake', 'Stripe', 'HL7 FHIR'], results: [{ label: 'HIPAA Compliance', value: '100%' }, { label: 'Patients Served', value: '45K+' }, { label: 'Billing Errors', value: '-88%' }, { label: 'Consult Time', value: '-30%' }], testimonial: { quote: 'Moving from fax machines to a digital platform was transformative. Patient satisfaction is at an all-time high.', author: 'Dr. Evelyn Torres', role: 'Medical Director, MediConnect Health' } },
+  'fintech-payments': { slug: 'fintech-payments', industry: 'FinTech & Payments', category: 'Health & Finance', icon: '/icons/industries/fintech.svg', metric: '$50M+ Volume', client: 'ClearPay Neobank', overview: 'ClearPay needed a full-stack neobanking app with multi-currency accounts, real-time international transfers, AI fraud detection, and PSD2-regulated open banking integrations.', challenge: 'Their white-label banking app had rising licensing fees, no custom features, and a poor mobile UX causing enterprise client loss.', solution: 'We built a custom neobanking platform with SWIFT and SEPA payment rails, AI fraud detection, PSD2-compliant open banking API, and biometric mobile apps.', deliverables: ['Multi-currency personal and business accounts', 'Real-time SWIFT and SEPA payment rails', 'AI fraud detection and transaction risk engine', 'PSD2-compliant open banking API', 'Biometric-secured mobile apps (iOS and Android)', 'Business spend analytics and reporting dashboard'], techStack: ['React Native', 'Node.js', 'PostgreSQL', 'Kafka', 'AWS', 'Stripe Treasury', 'TensorFlow'], results: [{ label: 'Payment Volume', value: '$50M+' }, { label: 'Fraud Prevention', value: '99.6%' }, { label: 'Transfer Speed', value: '<3 sec' }, { label: 'User Growth', value: '+180%' }], testimonial: { quote: 'Devtor360 delivered a neobanking platform that rivals Revolut in UX. The fraud engine saves us $200K+ per year.', author: 'James Whitfield', role: 'CEO, ClearPay Neobank' } },
+  'insurtech-risk-analytics': { slug: 'insurtech-risk-analytics', industry: 'InsurTech & Risk Analytics', category: 'Health & Finance', icon: '/icons/expertise-it-consulting.svg', metric: 'Bank Encryption', client: 'ShieldAI Underwriting', overview: 'ShieldAI wanted to automate commercial insurance underwriting using AI risk models, replacing a 5-day manual review with near-instant risk assessments.', challenge: 'Underwriters manually reviewed hundreds of documents per day causing inconsistent pricing. Brokers abandoned quotes during the 5-day wait.', solution: 'We built an AI underwriting engine that analyses documents to generate instant risk scores and automated policy documents reviewed in under 4 hours.', deliverables: ['AI document analysis and risk scoring engine', 'Automated policy generation and versioning', 'Broker portal with real-time quote tracking', 'Claims processing automation workflow', 'Regulatory compliance audit trail', 'Bank-grade AES-256 data encryption'], techStack: ['Python', 'FastAPI', 'OpenAI API', 'PostgreSQL', 'AWS', 'DocuSign API', 'React'], results: [{ label: 'Underwriting Time', value: '5d to 4h' }, { label: 'Quote Accuracy', value: '98.7%' }, { label: 'Broker Retention', value: '+55%' }, { label: 'Ops Cost', value: '-60%' }], testimonial: { quote: 'Our team now handles 4x the volume with the same headcount. The AI risk engine is frighteningly accurate.', author: 'Patricia Wong', role: 'Chief Underwriting Officer, ShieldAI' } },
+  'biotech-clinical-systems': { slug: 'biotech-clinical-systems', industry: 'BioTech & Clinical Systems', category: 'Health & Finance', icon: '/icons/expertise-digital-transformation.svg', metric: 'Zero Data Loss', client: 'GenomePath Biotech', overview: 'GenomePath runs clinical trials across 30 research sites in 8 countries and needed a GCP-compliant data management system with encrypted genomic pipelines and FDA e-submissions.', challenge: 'Paper-based data collection shipped to a central lab caused 3-week delays, data loss incidents, and failed FDA audit trails.', solution: 'We built a GCP-compliant system with encrypted mobile data capture, automated audit trails, and FDA 21 CFR Part 11-compliant e-submission workflows.', deliverables: ['GCP-compliant clinical trial management system', 'Encrypted mobile data capture (offline-first)', 'Automated FDA 21 CFR Part 11 audit trail', 'Real-time lab result ingestion and validation', 'Regulatory e-submission workflow (FDA, EMA)', 'Multi-site coordinator dashboard'], techStack: ['React Native', 'Node.js', 'PostgreSQL', 'AWS GovCloud', 'AES-256 Encryption', 'Python', 'FHIR R4'], results: [{ label: 'Data Loss Incidents', value: '0' }, { label: 'Data Capture Lag', value: '21d to 0' }, { label: 'Audit Pass Rate', value: '100%' }, { label: 'Site Productivity', value: '+70%' }], testimonial: { quote: 'Our last three FDA audits passed on the first attempt. The data integrity guarantees are truly zero-compromise.', author: 'Dr. Michael Osei', role: 'VP Clinical Operations, GenomePath Biotech' } },
+  'travel-booking': { slug: 'travel-booking', industry: 'Travel & Booking', category: 'Hospitality', icon: '/icons/industries/travel-tech.svg', metric: 'Instant Booking', client: 'Wanderlux Travel', overview: 'Wanderlux is a premium travel operator needing a real-time booking platform with live availability, dynamic pricing, multi-currency checkout, and AI-personalised itinerary planning.', challenge: 'Bookings processed by agents over email took 24-48 hours. No real-time inventory, no mobile app, and no personalisation caused high-value customer loss to OTAs.', solution: 'We built an end-to-end travel booking platform with real-time aggregation, AI itinerary personalisation, instant multi-currency checkout, and a traveller companion app.', deliverables: ['Real-time flight, hotel and experience aggregation', 'AI-powered personalised itinerary builder', 'Instant multi-currency checkout (18 currencies)', 'Traveller mobile app with offline trip access', 'Agent back-office and booking management dashboard', 'Automated email and SMS trip notifications'], techStack: ['Next.js', 'Node.js', 'React Native', 'PostgreSQL', 'Amadeus API', 'Stripe', 'Redis'], results: [{ label: 'Booking Confirmation', value: 'Instant' }, { label: 'Conversion Rate', value: '+47%' }, { label: 'Revenue per User', value: '+$340' }, { label: 'Support Tickets', value: '-62%' }], testimonial: { quote: 'Instant booking confirmation transformed our business. We convert clients we used to lose during the 48-hour email wait.', author: 'Isabelle Laurent', role: 'Founder, Wanderlux Travel' } },
+  'proptech-real-estate': { slug: 'proptech-real-estate', industry: 'PropTech & Real Estate', category: 'Hospitality', icon: '/icons/industries/prop-tech.svg', metric: '80% Time Saved', client: 'NestIQ Real Estate', overview: 'NestIQ manages 8,000+ properties across 3 cities and needed a unified platform replacing manual lease management, WhatsApp maintenance tickets, and disconnected rent collection.', challenge: 'Property managers drowned in paperwork. 35% of maintenance issues were unresolved after 14 days, and rent collection had no automated reconciliation.', solution: 'We built a property management platform with digital lease signing, automated rent collection, tenant maintenance portal with SLA tracking, and a landlord analytics dashboard.', deliverables: ['Digital lease generation and e-signature workflow', 'Automated rent collection and reconciliation', 'Tenant maintenance portal with SLA enforcement', 'Property listing portal with virtual tours', 'Landlord portfolio analytics dashboard', 'WhatsApp and SMS communication automation'], techStack: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe', 'DocuSign', 'Twilio', 'AWS'], results: [{ label: 'Admin Time Saved', value: '80%' }, { label: 'Maintenance SLA', value: '14d to 2d' }, { label: 'Rent Collection', value: '99.2%' }, { label: 'Tenant Satisfaction', value: '4.8/5' }], testimonial: { quote: 'We manage 8,000 properties with a team that used to struggle with 2,000. The platform runs itself.', author: 'David Okafor', role: 'MD, NestIQ Real Estate' } },
+  'foodtech-delivery': { slug: 'foodtech-delivery', industry: 'FoodTech & Delivery', category: 'Hospitality', icon: '/icons/service-mobile-app.svg', metric: '< 1s Dispatch', client: 'QuickBite Super App', overview: 'QuickBite operates a multi-vendor food delivery network across 12 cities with 500+ restaurant partners and needed a consumer app, AI dispatch engine, and restaurant portal.', challenge: 'Their legacy system took 8+ seconds to dispatch drivers, had no real-time tracking, and a 3-week restaurant onboarding process crippling expansion.', solution: 'We built a complete food delivery ecosystem: consumer app with live tracking, AI dispatch with sub-1-second assignment, restaurant tablet app, and a driver route optimiser.', deliverables: ['Consumer app with live GPS order tracking', 'AI dispatch engine with sub-1s driver assignment', 'Restaurant tablet app with kitchen order management', 'Driver app with real-time route optimisation', 'Multi-branch restaurant management portal', 'Analytics dashboard (GMV, delivery times, ratings)'], techStack: ['React Native', 'Node.js', 'Redis', 'WebSockets', 'Mapbox', 'PostgreSQL', 'AWS'], results: [{ label: 'Dispatch Latency', value: '<1 sec' }, { label: 'Active Users', value: '250K+' }, { label: 'Avg Delivery Time', value: '-18 min' }, { label: 'Restaurant Partners', value: '500+' }], testimonial: { quote: 'Sub-1-second dispatch is a game changer. Drivers are more efficient and customers keep coming back.', author: 'Omar Khalil', role: 'CEO, QuickBite' } },
+  'events-venue-booking': { slug: 'events-venue-booking', industry: 'Events & Venue Booking', category: 'Hospitality', icon: '/icons/service-web-app.svg', metric: '1M+ Attendees', client: 'EventSphere Platform', overview: 'EventSphere manages ticketing for 200+ major events annually and needed interactive seat map booking, live QR check-in, vendor management, and analytics for 1M+ attendees.', challenge: 'Ticketing was fragmented across three platforms with no unified data. Manual check-in caused 40-minute queues and organisers had no real-time capacity visibility.', solution: 'We built a full-stack events platform with SVG seat map booking, QR-code check-in with 500ms validation, real-time capacity dashboards, and post-event analytics.', deliverables: ['Interactive SVG seat map booking engine', 'QR-code check-in with sub-500ms validation', 'Real-time capacity and crowd management dashboard', 'Event organiser and vendor management portal', 'Automated attendee communication system', 'Post-event analytics and revenue reporting'], techStack: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Redis', 'Stripe', 'AWS'], results: [{ label: 'Attendees Served', value: '1M+' }, { label: 'Check-in Time', value: '40min to 8sec' }, { label: 'No-show Rate', value: '-34%' }, { label: 'Ticket Revenue', value: '+$4.8M' }], testimonial: { quote: 'Cutting check-in from 40 minutes to 8 seconds eliminated the biggest complaint we heard from attendees for years.', author: 'Lena Kovac', role: 'COO, EventSphere Platform' } },
 };
 
 export const INDUSTRIES_DATA = {
-  eyebrow: "Industry Verticals",
-  headline: "Domain Engineering for High-Stakes Sectors",
-  description: "We engineer tailored solutions meeting stringent regulatory standards and enterprise workloads.",
-  caseStudyLabel: "Case Study →",
-  tabs: ["Technology", "Commerce", "Health & Finance", "Hospitality"] as IndustryCategory[],
+  eyebrow: 'Industry Verticals',
+  headline: 'Domain Engineering for High-Stakes Sectors',
+  description: 'We engineer tailored solutions meeting stringent regulatory standards and enterprise workloads.',
+  caseStudyLabel: 'Case Study →',
+  tabs: ['Technology', 'Commerce', 'Health & Finance', 'Hospitality'] as IndustryCategory[],
   industries: [
-    // ── Technology ──
-    {
-      icon: "/icons/industries/edtech.svg",
-      title: "EdTech & Education",
-      description: "Virtual classrooms, interactive assessment platforms, and student management systems.",
-      category: "Technology" as const,
-      metric: "100K+ Learners",
-    },
-    {
-      icon: "/icons/industries/blockchain.svg",
-      title: "Web3 & Blockchain",
-      description: "Smart contracts, decentralized wallets, and secure enterprise data protocols.",
-      category: "Technology" as const,
-      metric: "Audited Code",
-    },
-    {
-      icon: "/icons/expertise-custom-development.svg",
-      title: "AI & Intelligent Systems",
-      description: "Custom LLM pipelines, autonomous agents, and smart predictive analytics.",
-      category: "Technology" as const,
-      metric: "Sub-15ms Latency",
-    },
-    {
-      icon: "/icons/industries/cloud-infra.svg",
-      title: "Cloud & DevOps Infrastructure",
-      description: "Multi-region cluster orchestration, automated CI/CD pipelines, and zero-downtime scaling.",
-      category: "Technology" as const,
-      metric: "99.99% Uptime",
-    },
-
-    // ── Commerce ──
-    {
-      icon: "/icons/industries/retail-tech.svg",
-      title: "Retail & E-Commerce",
-      description: "High-conversion storefronts, dynamic inventory syncing, and loyalty systems.",
-      category: "Commerce" as const,
-      metric: "+34% Conversion",
-    },
-    {
-      icon: "/icons/industries/autotech.svg",
-      title: "AutoTech & Telematics",
-      description: "Connected vehicle apps, fleet tracking dashboards, and IoT gateway interfaces.",
-      category: "Commerce" as const,
-      metric: "10K+ Nodes",
-    },
-    {
-      icon: "/icons/industries/fmcg.svg",
-      title: "FMCG & Consumer Goods",
-      description: "Direct-to-consumer platforms, wholesale distribution networks, and digital brand hubs.",
-      category: "Commerce" as const,
-      metric: "500K+ SKUs",
-    },
-    {
-      icon: "/icons/industries/agr-tech.svg",
-      title: "AgriTech & Supply Chain",
-      description: "Farm yield tracking dashboards, grain logistics portals, and automated distribution pipelines.",
-      category: "Commerce" as const,
-      metric: "40% Fast Logistics",
-    },
-
-    // ── Health & Finance ──
-    {
-      icon: "/icons/industries/health-tech.svg",
-      title: "HealthTech & MedTech",
-      description: "HIPAA-compliant telehealth platforms, patient portals, and diagnostic workflows.",
-      category: "Health & Finance" as const,
-      metric: "HIPAA Compliant",
-    },
-    {
-      icon: "/icons/industries/fintech.svg",
-      title: "FinTech & Payments",
-      description: "Payment integrations, neo-banking applications, and risk assessment engines.",
-      category: "Health & Finance" as const,
-      metric: "$50M+ Volume",
-    },
-    {
-      icon: "/icons/expertise-it-consulting.svg",
-      title: "InsurTech & Risk Analytics",
-      description: "Automated underwriting tools, digital claim processing engines, and policy portals.",
-      category: "Health & Finance" as const,
-      metric: "Bank Encryption",
-    },
-    {
-      icon: "/icons/expertise-digital-transformation.svg",
-      title: "BioTech & Clinical Systems",
-      description: "Clinical trial management platforms, lab data pipelines, and encrypted diagnostic data hubs.",
-      category: "Health & Finance" as const,
-      metric: "Zero Data Loss",
-    },
-
-    // ── Hospitality ──
-    {
-      icon: "/icons/industries/travel-tech.svg",
-      title: "Travel & Booking",
-      description: "Real-time reservation engines, itinerary planners, and multi-currency platforms.",
-      category: "Hospitality" as const,
-      metric: "Instant Booking",
-    },
-    {
-      icon: "/icons/industries/prop-tech.svg",
-      title: "PropTech & Real Estate",
-      description: "Property listing portals, tenant onboarding tools, and automated management software.",
-      category: "Hospitality" as const,
-      metric: "80% Time Saved",
-    },
-    {
-      icon: "/icons/service-mobile-app.svg",
-      title: "FoodTech & Delivery",
-      description: "On-demand food ordering platforms, multi-branch kitchen sync, and route optimization.",
-      category: "Hospitality" as const,
-      metric: "< 1s Dispatch",
-    },
-    {
-      icon: "/icons/service-web-app.svg",
-      title: "Events & Venue Booking",
-      description: "Interactive seat map booking, live attendee check-in tools, and event management engines.",
-      category: "Hospitality" as const,
-      metric: "1M+ Attendees",
-    },
+    { icon: '/icons/industries/edtech.svg', title: 'EdTech & Education', description: 'Virtual classrooms, interactive assessment platforms, and student management systems.', category: 'Technology' as const, metric: '100K+ Learners', slug: 'edtech-education' },
+    { icon: '/icons/industries/blockchain.svg', title: 'Web3 & Blockchain', description: 'Smart contracts, decentralized wallets, and secure enterprise data protocols.', category: 'Technology' as const, metric: 'Audited Code', slug: 'web3-blockchain' },
+    { icon: '/icons/expertise-custom-development.svg', title: 'AI & Intelligent Systems', description: 'Custom LLM pipelines, autonomous agents, and smart predictive analytics.', category: 'Technology' as const, metric: 'Sub-15ms Latency', slug: 'ai-intelligent-systems' },
+    { icon: '/icons/industries/cloud-infra.svg', title: 'Cloud & DevOps Infrastructure', description: 'Multi-region cluster orchestration, automated CI/CD pipelines, and zero-downtime scaling.', category: 'Technology' as const, metric: '99.99% Uptime', slug: 'cloud-devops-infrastructure' },
+    { icon: '/icons/industries/retail-tech.svg', title: 'Retail & E-Commerce', description: 'High-conversion storefronts, dynamic inventory syncing, and loyalty systems.', category: 'Commerce' as const, metric: '+34% Conversion', slug: 'retail-ecommerce' },
+    { icon: '/icons/industries/autotech.svg', title: 'AutoTech & Telematics', description: 'Connected vehicle apps, fleet tracking dashboards, and IoT gateway interfaces.', category: 'Commerce' as const, metric: '10K+ Nodes', slug: 'autotech-telematics' },
+    { icon: '/icons/industries/fmcg.svg', title: 'FMCG & Consumer Goods', description: 'Direct-to-consumer platforms, wholesale distribution networks, and digital brand hubs.', category: 'Commerce' as const, metric: '500K+ SKUs', slug: 'fmcg-consumer-goods' },
+    { icon: '/icons/industries/agr-tech.svg', title: 'AgriTech & Supply Chain', description: 'Farm yield tracking dashboards, grain logistics portals, and automated distribution pipelines.', category: 'Commerce' as const, metric: '40% Fast Logistics', slug: 'agritech-supply-chain' },
+    { icon: '/icons/industries/health-tech.svg', title: 'HealthTech & MedTech', description: 'HIPAA-compliant telehealth platforms, patient portals, and diagnostic workflows.', category: 'Health & Finance' as const, metric: 'HIPAA Compliant', slug: 'healthtech-medtech' },
+    { icon: '/icons/industries/fintech.svg', title: 'FinTech & Payments', description: 'Payment integrations, neo-banking applications, and risk assessment engines.', category: 'Health & Finance' as const, metric: '$50M+ Volume', slug: 'fintech-payments' },
+    { icon: '/icons/expertise-it-consulting.svg', title: 'InsurTech & Risk Analytics', description: 'Automated underwriting tools, digital claim processing engines, and policy portals.', category: 'Health & Finance' as const, metric: 'Bank Encryption', slug: 'insurtech-risk-analytics' },
+    { icon: '/icons/expertise-digital-transformation.svg', title: 'BioTech & Clinical Systems', description: 'Clinical trial management platforms, lab data pipelines, and encrypted diagnostic data hubs.', category: 'Health & Finance' as const, metric: 'Zero Data Loss', slug: 'biotech-clinical-systems' },
+    { icon: '/icons/industries/travel-tech.svg', title: 'Travel & Booking', description: 'Real-time reservation engines, itinerary planners, and multi-currency platforms.', category: 'Hospitality' as const, metric: 'Instant Booking', slug: 'travel-booking' },
+    { icon: '/icons/industries/prop-tech.svg', title: 'PropTech & Real Estate', description: 'Property listing portals, tenant onboarding tools, and automated management software.', category: 'Hospitality' as const, metric: '80% Time Saved', slug: 'proptech-real-estate' },
+    { icon: '/icons/service-mobile-app.svg', title: 'FoodTech & Delivery', description: 'On-demand food ordering platforms, multi-branch kitchen sync, and route optimization.', category: 'Hospitality' as const, metric: '< 1s Dispatch', slug: 'foodtech-delivery' },
+    { icon: '/icons/service-web-app.svg', title: 'Events & Venue Booking', description: 'Interactive seat map booking, live attendee check-in tools, and event management engines.', category: 'Hospitality' as const, metric: '1M+ Attendees', slug: 'events-venue-booking' },
   ] as IndustryItem[],
 };
-
 export const INDUSTRY_TABS = INDUSTRIES_DATA.tabs;
 export const INDUSTRIES = INDUSTRIES_DATA.industries;
 

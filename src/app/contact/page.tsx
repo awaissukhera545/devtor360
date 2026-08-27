@@ -97,7 +97,7 @@ export default function Contact() {
                 })}
               </div>
 
-              <div className="mt-8 rounded-2xl border-b-4 border-navy-700 bg-accent p-6 sm:p-7 lg:mt-10">
+              {/* <div className="mt-8 rounded-2xl border-b-4 border-navy-700 bg-accent p-6 sm:p-7 lg:mt-10">
                 <h3 className="text-xl font-bold text-foreground">
                   {whatHappensNext.headline}
                 </h3>
@@ -118,7 +118,7 @@ export default function Contact() {
                     </li>
                   ))}
                 </ol>
-              </div>
+              </div> */}
             </div>
 
             <ContactForm />

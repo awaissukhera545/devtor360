@@ -119,7 +119,7 @@ export default function Industries() {
                     {industry.category}
                   </span>
                   <a
-                    href="/contact"
+                    href={`/case-study/${industry.slug}`}
                     className="text-xs font-bold text-foreground hover:text-primary transition-colors"
                   >
                     {caseStudyLabel}

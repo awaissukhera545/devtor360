@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <!-- Cloud shape -->
+  <path d="M30 26H12a6 6 0 1 1 .9-11.93 8 8 0 0 1 15.7 1.43A5 5 0 1 1 30 26Z" fill="#3B82F6" fill-opacity="0.15" stroke="#3B82F6" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Down arrow / deploy arrow -->
+  <path d="M20 20v7M17 25l3 3 3-3" stroke="#3B82F6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
