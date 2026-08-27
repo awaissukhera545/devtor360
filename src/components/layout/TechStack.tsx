@@ -13,43 +13,43 @@ export default function TechStack() {
   const { eyebrow, headline, description } = TECH_STACK_DATA;
 
   return (
-    <section aria-label="Technologies we use" className="bg-slate-50/50 py-8 sm:py-10 border-y border-border/70">
-      <div className="mx-auto max-w-content px-6 text-center lg:px-8">
+    <section aria-label="Technologies we use" className="bg-slate-50/50 py-8 sm:py-10 lg:py-14 2xl:py-18 border-y border-border/70">
+      <div className="mx-auto max-w-content px-6 text-center lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-center gap-2">
           <span className="h-2 w-2 rounded-full bg-primary" />
-          <span className="text-xs font-mono font-bold tracking-widest text-primary uppercase">
+          <span className="text-xs sm:text-sm 2xl:text-base font-mono font-bold tracking-widest text-primary uppercase">
             {eyebrow}
           </span>
         </div>
 
-        <h2 className="mt-2 text-[1.5rem] font-extrabold leading-tight text-foreground sm:text-[1.875rem]">
+        <h2 className="mt-2 text-[1.5rem] font-extrabold leading-tight text-foreground sm:text-[1.875rem] lg:text-[2.25rem] 2xl:text-[2.75rem]">
           {headline}
         </h2>
-        <p className="mx-auto mt-1.5 max-w-xl text-xs sm:text-sm text-muted-foreground">
+        <p className="mx-auto mt-1.5 max-w-xl 2xl:max-w-2xl text-xs sm:text-sm 2xl:text-base text-muted-foreground">
           {description}
         </p>
       </div>
 
       {/* ── Reverse Marquee ─────────────────────────────────────────── */}
-      <div className="mt-5 marquee-fade-x overflow-hidden sm:mt-6">
-        <div className="flex w-max animate-marquee-reverse items-center gap-5 sm:gap-6 py-2">
+      <div className="mt-5 marquee-fade-x overflow-hidden sm:mt-6 2xl:mt-8">
+        <div className="flex w-max animate-marquee-reverse items-center gap-5 sm:gap-6 2xl:gap-8 py-2">
           {ITEMS.map((tech, index) => (
             <div
               key={`${tech.name}-${index}`}
-              className="flex items-center gap-3 rounded-xl border border-border/90 bg-white px-4 py-2.5 shadow-xs transition-all hover:border-primary/50 hover:shadow-sm"
+              className="flex items-center gap-3 2xl:gap-4 rounded-xl 2xl:rounded-2xl border border-border/90 bg-white px-4 py-2.5 2xl:px-6 2xl:py-3.5 shadow-xs transition-all hover:border-primary/50 hover:shadow-sm"
             >
               <Image
                 src={tech.src}
                 alt={tech.name}
                 width={tech.width}
                 height={tech.height}
-                className="h-6 w-auto object-contain sm:h-7"
+                className="h-6 w-auto object-contain sm:h-7 2xl:h-9"
               />
               <div>
-                <p className="text-xs font-bold text-foreground font-display">
+                <p className="text-xs sm:text-sm 2xl:text-base font-bold text-foreground font-display">
                   {tech.name}
                 </p>
-                <p className="text-[10px] font-mono text-muted-foreground">
+                <p className="text-[10px] 2xl:text-xs font-mono text-muted-foreground">
                   {tech.category}
                 </p>
               </div>

@@ -16,28 +16,28 @@ export default function WhyChooseUs() {
   const { eyebrow, headline, description, qualityBadge, pillars, methodology } = WHY_US_DATA;
 
   return (
-    <section id="why-us" aria-label="Why choose Devtor360" className="py-8 sm:py-12 lg:py-14 bg-slate-50/60 border-t border-border/70">
-      <div className="mx-auto max-w-content px-6 lg:px-8">
+    <section id="why-us" aria-label="Why choose Devtor360" className="py-8 sm:py-12 lg:py-16 2xl:py-20 bg-slate-50/60 border-t border-border/70">
+      <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* ── Eyebrow & Headline ───────────────────────────────────────── */}
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl 2xl:max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-primary" />
-            <span className="text-xs font-bold tracking-wider text-primary uppercase">
+            <span className="text-xs sm:text-sm 2xl:text-base font-bold tracking-wider text-primary uppercase">
               {eyebrow}
             </span>
           </div>
 
-          <h2 className="mt-2 text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-[2.25rem] lg:text-[2.65rem]">
+          <h2 className="mt-2 text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-[2.25rem] lg:text-[2.65rem] xl:text-[3rem] 2xl:text-[3.5rem]">
             {headline}
           </h2>
 
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="mt-2 text-sm sm:text-base 2xl:text-lg leading-relaxed text-muted-foreground">
             {description}
           </p>
         </div>
 
         {/* ── 4 Core Value Pillars ─────────────────────────────────────── */}
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:mt-7 sm:gap-5">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:mt-7 sm:gap-5 2xl:gap-7">
           {pillars.map((pillar, i) => {
             const Icon = PILLAR_ICONS[i % PILLAR_ICONS.length];
             return (
@@ -47,16 +47,16 @@ export default function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="rounded-2xl border border-border bg-white p-4 sm:p-5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md flex flex-col justify-between"
+                className="rounded-2xl 2xl:rounded-3xl border border-border bg-white p-4 sm:p-5 2xl:p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <Icon size={20} className="stroke-[2.2]" />
+                  <div className="flex h-10 w-10 2xl:h-13 2xl:w-13 items-center justify-center rounded-xl 2xl:rounded-2xl bg-primary/10 text-primary">
+                    <Icon size={20} className="stroke-[2.2] 2xl:w-6 2xl:h-6" />
                   </div>
-                  <h3 className="mt-3.5 text-base font-bold text-foreground">
+                  <h3 className="mt-3.5 2xl:mt-5 text-base 2xl:text-xl font-bold text-foreground">
                     {pillar.title}
                   </h3>
-                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-1.5 text-xs sm:text-sm 2xl:text-base leading-relaxed text-muted-foreground">
                     {pillar.description}
                   </p>
                 </div>
@@ -94,9 +94,6 @@ export default function WhyChooseUs() {
                   <div className="flex items-center justify-between">
                     <span className="text-xl font-extrabold text-primary font-display">
                       {step.step}
-                    </span>
-                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-bold text-slate-700">
-                      {step.timeline}
                     </span>
                   </div>
 

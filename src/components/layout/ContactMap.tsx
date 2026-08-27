@@ -120,7 +120,7 @@ export default function ContactMap() {
         {/* ── Map wrapper ────────────────────────────────────────────────── */}
         <div className="relative overflow-hidden rounded-2xl border border-border shadow-dock">
           {/* Address pill overlay */}
-          <div className="absolute left-4 top-4 z-[1000] flex items-center gap-2 rounded-full border border-border bg-white/95 px-4 py-2 shadow-md backdrop-blur-sm">
+          <div className="absolute left-4 top-4 z-1000 flex items-center gap-2 rounded-full border border-border bg-white/95 px-4 py-2 shadow-md backdrop-blur-sm">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary">
               <MapPin size={12} className="text-white" />
             </span>
@@ -137,7 +137,7 @@ export default function ContactMap() {
           {/* Leaflet mount point */}
           <div
             ref={mapRef}
-            className="h-[360px] w-full sm:h-[440px] lg:h-[500px]"
+            className="h-90 w-full sm:h-110 lg:h-125"
             aria-label="Interactive map showing Devtor360 office location"
           />
         </div>

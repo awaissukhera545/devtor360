@@ -18,7 +18,7 @@ const ICON_MAP = {
 };
 
 export default function Contact() {
-  const { hero, getInTouch, contactDetails, whatHappensNext } = CONTACT_PAGE_DATA;
+  const { hero, getInTouch, contactDetails } = CONTACT_PAGE_DATA;
 
   return (
     <>

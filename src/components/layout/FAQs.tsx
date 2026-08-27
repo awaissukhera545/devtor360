@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { FAQS_DATA } from "@/lib/site-data";
@@ -10,24 +11,24 @@ export default function FAQs() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faqs" aria-label="Frequently asked questions" className="py-8 sm:py-12 lg:py-14 border-t border-border/60">
-      <div className="mx-auto max-w-content px-6 lg:px-8">
+    <section id="faqs" aria-label="Frequently asked questions" className="py-8 sm:py-12 lg:py-16 2xl:py-20 border-t border-border/60">
+      <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-center gap-2">
           <span className="h-2 w-2 rounded-full bg-primary" />
-          <span className="text-xs font-bold tracking-wider text-primary uppercase">
+          <span className="text-xs sm:text-sm 2xl:text-base font-bold tracking-wider text-primary uppercase">
             {eyebrow}
           </span>
         </div>
 
-        <h2 className="mt-2 text-center text-[1.5rem] font-bold leading-tight text-foreground sm:text-[1.875rem] lg:text-[2.15rem]">
+        <h2 className="mt-2 text-center text-[1.5rem] font-bold leading-tight text-foreground sm:text-[1.875rem] lg:text-[2.15rem] xl:text-[2.65rem] 2xl:text-[3rem]">
           {headline}
         </h2>
-        <p className="mx-auto mt-1.5 max-w-xl text-center text-xs sm:text-sm text-muted-foreground">
+        <p className="mx-auto mt-1.5 max-w-xl 2xl:max-w-2xl text-center text-xs sm:text-sm 2xl:text-base text-muted-foreground">
           {description}
         </p>
 
         {/* ── FAQ Accordion ─────────────────────────────────────────── */}
-        <div className="mx-auto mt-6 max-w-3xl divide-y divide-border border-t border-border sm:mt-7">
+        <div className="mx-auto mt-6 2xl:mt-10 max-w-3xl 2xl:max-w-4xl divide-y divide-border border-t border-border sm:mt-7">
           {faqs.map((faq, index) => {
             const isOpen = index === openIndex;
             return (
@@ -36,13 +37,13 @@ export default function FAQs() {
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-4 py-3 text-left sm:py-3.5"
+                  className="flex w-full items-center justify-between gap-4 py-3 sm:py-3.5 2xl:py-5 text-left"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs font-bold text-primary">
+                  <div className="flex items-center gap-3 2xl:gap-4">
+                    <span className="flex h-6 w-6 2xl:h-8 2xl:w-8 shrink-0 items-center justify-center rounded-md 2xl:rounded-lg bg-primary/10 text-xs 2xl:text-sm font-bold text-primary">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-sm font-bold text-foreground sm:text-base">
+                    <span className="text-sm sm:text-base 2xl:text-xl font-bold text-foreground">
                       {faq.question}
                     </span>
                   </div>
@@ -51,7 +52,7 @@ export default function FAQs() {
                     transition={{ duration: 0.25 }}
                     className="shrink-0 text-muted-foreground"
                   >
-                    <ChevronDown size={18} />
+                    <ChevronDown size={18} className="2xl:w-6 2xl:h-6" />
                   </motion.span>
                 </button>
 
@@ -65,7 +66,7 @@ export default function FAQs() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-3.5 pl-9 text-xs leading-relaxed text-muted-foreground sm:pl-10 sm:text-sm">
+                      <p className="pb-3.5 2xl:pb-5 pl-9 sm:pl-10 2xl:pl-12 text-xs sm:text-sm 2xl:text-base leading-relaxed text-muted-foreground">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -77,21 +78,21 @@ export default function FAQs() {
         </div>
 
         {/* ── Help Box ──────────────────────────────────────────────── */}
-        <div className="mx-auto mt-6 max-w-2xl rounded-2xl border border-border/80 bg-muted/40 p-4 text-center sm:p-5">
-          <h3 className="text-base font-bold text-foreground">
+        <div className="mx-auto mt-6 2xl:mt-10 max-w-2xl 2xl:max-w-3xl rounded-2xl 2xl:rounded-3xl border border-border/80 bg-muted/40 p-4 sm:p-5 2xl:p-8 text-center">
+          <h3 className="text-base sm:text-lg 2xl:text-xl font-bold text-foreground">
             {helpBox.title}
           </h3>
-          <p className="mt-1 text-xs text-muted-foreground">
+          <p className="mt-1 text-xs sm:text-sm 2xl:text-base text-muted-foreground">
             {helpBox.description}
           </p>
-          <div className="mt-3.5">
-            <a
+          <div className="mt-3.5 2xl:mt-5">
+            <Link
               href={helpBox.ctaHref}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-5 py-2.5 text-xs font-semibold text-primary-foreground shadow-brand transition-all hover:bg-brand-600 sm:text-sm"
+              className="inline-flex items-center gap-1.5 rounded-xl 2xl:rounded-2xl bg-primary px-5 py-2.5 2xl:px-7 2xl:py-3.5 text-xs sm:text-sm 2xl:text-base font-semibold text-primary-foreground shadow-brand transition-all hover:bg-brand-600"
             >
               <span>{helpBox.ctaText}</span>
-              <ArrowUpRight size={15} />
-            </a>
+              <ArrowUpRight size={15} className="2xl:w-5 2xl:h-5" />
+            </Link>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const ITEMS = [
 
 export default function CompanyLogos() {
   return (
-    <section aria-label="Trusted by" className="py-6 sm:py-8">
+    <section aria-label="Trusted by" className="standalone-4k-hide py-6 sm:py-8">
       <div className="mx-auto max-w-content px-6 lg:px-8">
         {/* ── Minimalist Logos Marquee ───────────────────────────────── */}
         <div className="rounded-2xl border border-border bg-white py-4 px-4 shadow-xs sm:py-5 sm:px-6">

@@ -306,7 +306,7 @@ export const CAPABILITIES = SERVICES_DATA;
 // ─── 6. Industries ───────────────────────────────────────────────────────────
 
 
-// --- 6. Industries ---
+// --- 6. Industries & Case Studies ---
 
 export type IndustryCategory = 'Technology' | 'Commerce' | 'Health & Finance' | 'Hospitality';
 
@@ -323,11 +323,15 @@ export type CaseStudyResult = { label: string; value: string };
 
 export type CaseStudy = {
   slug: string;
+  title?: string;
   industry: string;
-  category: IndustryCategory;
-  icon: string;
+  category: IndustryCategory | string;
+  icon?: string;
+  image?: string;
   metric: string;
   client: string;
+  timeline?: string;
+  role?: string;
   overview: string;
   challenge: string;
   solution: string;
@@ -335,9 +339,164 @@ export type CaseStudy = {
   techStack: string[];
   results: CaseStudyResult[];
   testimonial: { quote: string; author: string; role: string };
+  highlights?: string[];
+  tags?: string[];
+  featured?: boolean;
 };
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
+  'hrm-enterprise-suite': {
+    slug: 'hrm-enterprise-suite',
+    title: 'HRM Enterprise Suite',
+    industry: 'HR Tech & Enterprise SaaS',
+    category: 'Technology',
+    icon: '/icons/expertise-custom-development.svg',
+    image: '/images/portfolio/compliance-suite.jpg',
+    metric: '40% Faster Onboarding',
+    client: 'WorkSphere Global',
+    timeline: '4 Months',
+    role: 'Full-Stack Architecture, Design System & Cloud Deployment',
+    overview: 'WorkSphere Global required an all-in-one workforce operating system capable of streamlining multi-entity employee onboarding, automated cross-border payroll calculations, benefits administration, and SOC2 compliance audit reporting.',
+    challenge: 'Their legacy HR software was split across four disconnected systems. Onboarding new international hires took up to 14 days, manual payroll audits suffered frequent calculation errors, and data silos made audit reporting a grueling multi-week ordeal.',
+    solution: 'We architected and built a unified, cloud-native enterprise SaaS platform with Next.js, TypeScript, PostgreSQL, and AWS. The system features an automated onboarding workflow engine, biometric document verification, localized multi-currency payroll calculations, and real-time SOC2 audit logs.',
+    deliverables: [
+      'Multi-tenant enterprise HR portal with role-based access control (RBAC)',
+      'Automated employee onboarding workflow with e-signatures & ID verification',
+      'Cross-border payroll engine supporting 28 currencies and tax jurisdictions',
+      'Automated benefits enrollment & PTO tracker',
+      'SOC2 Type II compliant immutable audit logging engine',
+      'Interactive analytics dashboards for headcount, retention, and compensation',
+    ],
+    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS', 'Tailwind CSS', 'Docker', 'Redis'],
+    results: [
+      { label: 'Onboarding Speed', value: '40% Faster' },
+      { label: 'Payroll Error Rate', value: '0.01%' },
+      { label: 'Query Latency', value: '<40ms' },
+      { label: 'Platform SLA', value: '99.99%' },
+    ],
+    testimonial: {
+      quote: 'Devtor360 engineered a bulletproof enterprise platform that replaced three disjointed legacy tools. Our HR team onboarded over 2,000 international employees in the first quarter with zero hiccups.',
+      author: 'Marcus Vance',
+      role: 'Chief People Officer, WorkSphere Global',
+    },
+    highlights: ['99.99% Uptime', 'Sub-40ms Query Speed', 'SOC2 Compliant'],
+    tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS'],
+    featured: true,
+  },
+  'smart-delivery-super-app': {
+    slug: 'smart-delivery-super-app',
+    title: 'Smart Delivery Super App',
+    industry: 'Logistics & On-Demand Delivery',
+    category: 'Commerce',
+    icon: '/icons/service-mobile-app.svg',
+    image: '/images/portfolio/smart-delivery.jpg',
+    metric: '250K+ Active Users',
+    client: 'SpeediX Express',
+    timeline: '5 Months',
+    role: 'Mobile Engineering, Real-Time Dispatch Engine & Payments',
+    overview: 'SpeediX Express needed a high-performance on-demand delivery ecosystem connecting 250,000+ active consumers, 3,500+ local merchant partners, and a fleet of 10,000+ couriers with sub-second order dispatch and live GPS tracking.',
+    challenge: 'Their previous mobile app experienced high battery drain, inaccurate GPS routing, and dispatch latency spikes exceeding 12 seconds during lunch and dinner peaks, resulting in 22% order cancellations.',
+    solution: 'We developed a reactive cross-platform mobile suite using React Native, backed by high-throughput Node.js microservices, Redis geospatial indexing, WebSockets for sub-100ms GPS updates, and Stripe one-tap payments with automated driver payouts.',
+    deliverables: [
+      'High-performance React Native iOS and Android consumer mobile app',
+      'Real-time courier app with intelligent turn-by-turn route optimization',
+      'Merchant partner tablet app with live order management & kitchen display system',
+      'AI-powered sub-second order dispatch and batching algorithm',
+      'Multi-currency payment gateway with instant courier cashout rails',
+      'Live operations command center dashboard with fleet heatmaps',
+    ],
+    techStack: ['React Native', 'Node.js', 'Redis', 'WebSockets', 'Mapbox', 'Stripe', 'PostgreSQL'],
+    results: [
+      { label: 'Active Users', value: '250K+' },
+      { label: 'Dispatch Latency', value: '< 1 sec' },
+      { label: 'Cancellation Drop', value: '-68%' },
+      { label: 'Driver Efficiency', value: '+35%' },
+    ],
+    testimonial: {
+      quote: 'The real-time routing and sub-second dispatch revolutionized our logistics. Our average delivery time dropped by 18 minutes and customer satisfaction reached an all-time peak.',
+      author: 'Tariq Al-Mansoor',
+      role: 'VP of Operations, SpeediX Express',
+    },
+    highlights: ['< 1s Dispatch Latency', 'Offline Geofencing', 'Multi-Language'],
+    tags: ['React Native', 'Node.js', 'Redis', 'Stripe'],
+    featured: true,
+  },
+  'gto-ai-training-suite': {
+    slug: 'gto-ai-training-suite',
+    title: 'GTO AI Training Suite',
+    industry: 'AI & Game Theory Simulation',
+    category: 'Technology',
+    icon: '/icons/expertise-custom-development.svg',
+    image: '/images/portfolio/gto-training.jpg',
+    metric: '99.8% Precision Rate',
+    client: 'StratEdge AI',
+    timeline: '3 Months',
+    role: 'Custom ML Pipeline, WebSockets Infrastructure & Web App',
+    overview: 'StratEdge AI needed an ultra-low-latency game theory simulation and training platform enabling professional players and analysts to simulate millions of complex decision trees per second with instant feedback and equity analysis.',
+    challenge: 'Existing web tools required heavy client-side desktop software or had server response latencies above 2 seconds, making deep scenario analysis slow and frustrating.',
+    solution: 'We engineered a high-throughput simulation pipeline using Python, PyTorch, and FastAPI with C++ simulation bindings, combined with a responsive Next.js frontend communicating over binary WebSockets for sub-15ms calculations.',
+    deliverables: [
+      'Sub-15ms Game Theory Optimal (GTO) simulation calculation engine',
+      'Interactive matrix visualizer for ranges, equities, and expected values (EV)',
+      'AI-driven mistake detection and personalized coaching curriculum',
+      'High-throughput WebSocket streaming architecture handling 10M+ daily runs',
+      'Custom training drills with automated spaced-repetition algorithms',
+      'Enterprise tier for coaching academies with student performance analytics',
+    ],
+    techStack: ['Python', 'FastAPI', 'PyTorch', 'Next.js', 'TypeScript', 'WebSockets', 'Redis'],
+    results: [
+      { label: 'Daily Simulations', value: '10M+' },
+      { label: 'Inference Latency', value: '<15ms' },
+      { label: 'Precision Rate', value: '99.8%' },
+      { label: 'User Retention', value: '+54%' },
+    ],
+    testimonial: {
+      quote: 'Simulating complex GTO nodes in under 15 milliseconds in the browser seemed impossible until Devtor360 built this platform. It has completely transformed how our elite users study.',
+      author: 'Kasper Lindqvist',
+      role: 'Head of Product, StratEdge AI',
+    },
+    highlights: ['10M+ Sim Runs/Day', 'Sub-15ms AI Inference', 'Custom ML Model'],
+    tags: ['Python', 'FastAPI', 'PyTorch', 'WebSockets'],
+    featured: true,
+  },
+  'compliance-automation-suite': {
+    slug: 'compliance-automation-suite',
+    title: 'Compliance Automation Suite',
+    industry: 'FinTech & Regulatory Technology',
+    category: 'Health & Finance',
+    icon: '/icons/expertise-it-consulting.svg',
+    image: '/images/portfolio/hrm-system.jpg',
+    metric: '60% Time Saved',
+    client: 'VeriComply Global',
+    timeline: '4 Months',
+    role: 'Fintech Architecture, Rules Engine & Regulatory Portal',
+    overview: 'VeriComply required a financial compliance automation engine capable of parsing cross-border transactions in real time, detecting AML/KYC anomalies, and automatically generating auditable compliance reports for regulators.',
+    challenge: 'Manual compliance reviews caused transaction backlogs, slowed down merchant settlements by 48 hours, and carried substantial risk of regulatory penalties due to missed sanctions list updates.',
+    solution: 'We built an automated regulatory rules engine that streams transactions through sanction registries, risk scoring algorithms, and immutable audit logs with automated SAR (Suspicious Activity Report) generation.',
+    deliverables: [
+      'Real-time AML & Sanctions screening pipeline with sub-50ms check times',
+      'Automated SAR filing and regulator-ready evidence package generation',
+      'Interactive compliance officer case management portal',
+      'Customizable risk scoring matrix and rule editor',
+      'Immutable cryptographic audit trail for third-party auditing',
+      'REST API gateway for seamless merchant core banking integration',
+    ],
+    techStack: ['Next.js', 'TypeScript', 'GraphQL', 'PostgreSQL', 'Tailwind CSS', 'AWS KMS', 'Redis'],
+    results: [
+      { label: 'Review Time Saved', value: '60%' },
+      { label: 'False Positives', value: '-82%' },
+      { label: 'Screening Speed', value: '<50ms' },
+      { label: 'Audit Pass Rate', value: '100%' },
+    ],
+    testimonial: {
+      quote: 'The automation suite reduced our compliance backlog from days to seconds. We passed our annual regulatory audit with zero findings and cut operational overhead by over 60%.',
+      author: 'Elena Rostova',
+      role: 'Chief Compliance Officer, VeriComply Global',
+    },
+    highlights: ['Automated Evidence Logs', 'Immutable Audit Trail', 'Bank-Grade Encryption'],
+    tags: ['Next.js', 'GraphQL', 'Tailwind CSS', 'Security'],
+    featured: true,
+  },
   'edtech-education': { slug: 'edtech-education', industry: 'EdTech & Education', category: 'Technology', icon: '/icons/industries/edtech.svg', metric: '100K+ Learners', client: 'EduNova Global', overview: 'EduNova Global needed a scalable e-learning platform to serve 100,000+ concurrent learners across 40 countries with real-time video, adaptive assessments, and progress analytics.', challenge: 'Their existing LMS crashed during peak hours, had no mobile support, and could not handle multi-language content, causing a 28% student churn rate.', solution: 'We engineered a cloud-native LMS on Next.js with WebRTC-powered virtual classrooms, AI-driven adaptive quiz engines, and a multi-tenant architecture.', deliverables: ['Multi-tenant LMS with per-institution white-labeling', 'Live virtual classroom engine (WebRTC + HLS fallback)', 'AI-powered adaptive quiz and assessment module', 'Student progress analytics dashboard', 'Mobile apps for iOS and Android (React Native)', 'Multi-language content system (12 languages)'], techStack: ['Next.js', 'TypeScript', 'WebRTC', 'AWS', 'PostgreSQL', 'React Native', 'OpenAI API'], results: [{ label: 'Active Learners', value: '100K+' }, { label: 'Platform Uptime', value: '99.98%' }, { label: 'Student Churn', value: '-28%' }, { label: 'Completion Rate', value: '+41%' }], testimonial: { quote: 'Devtor360 transformed our outdated LMS into a world-class platform. Student retention improved dramatically in the first month.', author: 'Sarah Mitchell', role: 'CTO, EduNova Global' } },
   'web3-blockchain': { slug: 'web3-blockchain', industry: 'Web3 & Blockchain', category: 'Technology', icon: '/icons/industries/blockchain.svg', metric: 'Audited Code', client: 'ChainVault Protocol', overview: 'ChainVault Protocol required a secure DeFi platform with audited smart contracts, a non-custodial multi-chain wallet, and real-time on-chain analytics.', challenge: 'Previous contractors delivered unaudited contracts with critical re-entrancy vulnerabilities. The team needed a fully audited, gas-optimized, multi-chain system.', solution: 'We rebuilt the protocol layer in Solidity with formal verification, integrated Chainlink oracles, and delivered a React dApp with hardware wallet support.', deliverables: ['Audited Solidity smart contracts (ERC-20, ERC-721, custom)', 'Non-custodial multi-chain wallet (Ethereum, Polygon, BSC)', 'Chainlink oracle integrations for price feeds', 'On-chain analytics and portfolio dashboard', 'REST and GraphQL developer API gateway', 'Hardware wallet support (Ledger, Trezor)'], techStack: ['Solidity', 'Hardhat', 'Ethers.js', 'React', 'The Graph', 'Chainlink', 'IPFS'], results: [{ label: 'Contracts Audited', value: '100%' }, { label: 'Gas Optimisation', value: '-38%' }, { label: 'TVL at Launch', value: '$4.2M' }, { label: 'Security Issues', value: '0' }], testimonial: { quote: 'The smart contracts passed a Tier-1 audit on the first attempt. Devtor360 attention to security is unmatched in Web3.', author: 'Alex Reyes', role: 'Founder, ChainVault Protocol' } },
   'ai-intelligent-systems': { slug: 'ai-intelligent-systems', industry: 'AI & Intelligent Systems', category: 'Technology', icon: '/icons/expertise-custom-development.svg', metric: 'Sub-15ms Latency', client: 'NeuralEdge Analytics', overview: 'NeuralEdge needed a production-grade AI inference platform for real-time recommendations, document intelligence, and intent prediction at sub-15ms latency.', challenge: 'Off-the-shelf AI APIs were too slow and expensive at scale, and could not be fine-tuned on proprietary data.', solution: 'We built a self-hosted LLM inference pipeline on AWS using fine-tuned models, RAG retrieval with Pinecone, and a unified API integrated into their SaaS suite.', deliverables: ['Custom fine-tuned LLM on proprietary dataset', 'RAG document retrieval system (Pinecone + embeddings)', 'Real-time product recommendation engine', 'Customer intent prediction pipeline', 'Unified AI API gateway with rate limiting', 'Model monitoring and drift detection dashboard'], techStack: ['Python', 'FastAPI', 'PyTorch', 'Pinecone', 'LangChain', 'AWS SageMaker', 'Redis'], results: [{ label: 'Inference Latency', value: '<15ms' }, { label: 'Recommendation CTR', value: '+52%' }, { label: 'Cost vs GPT-4', value: '-74%' }, { label: 'Model Accuracy', value: '99.4%' }], testimonial: { quote: 'We went from 800ms API latency to under 15ms and customers immediately noticed.', author: 'Dr. Priya Nair', role: 'Head of AI, NeuralEdge Analytics' } },
@@ -355,6 +514,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   'foodtech-delivery': { slug: 'foodtech-delivery', industry: 'FoodTech & Delivery', category: 'Hospitality', icon: '/icons/service-mobile-app.svg', metric: '< 1s Dispatch', client: 'QuickBite Super App', overview: 'QuickBite operates a multi-vendor food delivery network across 12 cities with 500+ restaurant partners and needed a consumer app, AI dispatch engine, and restaurant portal.', challenge: 'Their legacy system took 8+ seconds to dispatch drivers, had no real-time tracking, and a 3-week restaurant onboarding process crippling expansion.', solution: 'We built a complete food delivery ecosystem: consumer app with live tracking, AI dispatch with sub-1-second assignment, restaurant tablet app, and a driver route optimiser.', deliverables: ['Consumer app with live GPS order tracking', 'AI dispatch engine with sub-1s driver assignment', 'Restaurant tablet app with kitchen order management', 'Driver app with real-time route optimisation', 'Multi-branch restaurant management portal', 'Analytics dashboard (GMV, delivery times, ratings)'], techStack: ['React Native', 'Node.js', 'Redis', 'WebSockets', 'Mapbox', 'PostgreSQL', 'AWS'], results: [{ label: 'Dispatch Latency', value: '<1 sec' }, { label: 'Active Users', value: '250K+' }, { label: 'Avg Delivery Time', value: '-18 min' }, { label: 'Restaurant Partners', value: '500+' }], testimonial: { quote: 'Sub-1-second dispatch is a game changer. Drivers are more efficient and customers keep coming back.', author: 'Omar Khalil', role: 'CEO, QuickBite' } },
   'events-venue-booking': { slug: 'events-venue-booking', industry: 'Events & Venue Booking', category: 'Hospitality', icon: '/icons/service-web-app.svg', metric: '1M+ Attendees', client: 'EventSphere Platform', overview: 'EventSphere manages ticketing for 200+ major events annually and needed interactive seat map booking, live QR check-in, vendor management, and analytics for 1M+ attendees.', challenge: 'Ticketing was fragmented across three platforms with no unified data. Manual check-in caused 40-minute queues and organisers had no real-time capacity visibility.', solution: 'We built a full-stack events platform with SVG seat map booking, QR-code check-in with 500ms validation, real-time capacity dashboards, and post-event analytics.', deliverables: ['Interactive SVG seat map booking engine', 'QR-code check-in with sub-500ms validation', 'Real-time capacity and crowd management dashboard', 'Event organiser and vendor management portal', 'Automated attendee communication system', 'Post-event analytics and revenue reporting'], techStack: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Redis', 'Stripe', 'AWS'], results: [{ label: 'Attendees Served', value: '1M+' }, { label: 'Check-in Time', value: '40min to 8sec' }, { label: 'No-show Rate', value: '-34%' }, { label: 'Ticket Revenue', value: '+$4.8M' }], testimonial: { quote: 'Cutting check-in from 40 minutes to 8 seconds eliminated the biggest complaint we heard from attendees for years.', author: 'Lena Kovac', role: 'COO, EventSphere Platform' } },
 };
+
+export const ALL_CASE_STUDIES = CASE_STUDIES;
 
 export const INDUSTRIES_DATA = {
   eyebrow: 'Industry Verticals',
@@ -387,13 +548,22 @@ export const INDUSTRIES = INDUSTRIES_DATA.industries;
 // ─── 7. Case Studies / Featured Projects ─────────────────────────────────────
 
 export type ProjectItem = {
+  slug: string;
   title: string;
+  client: string;
   category: string;
   description: string;
   image: string;
   tags: string[];
   metrics: string;
   highlights: string[];
+  overview?: string;
+  challenge?: string;
+  solution?: string;
+  deliverables?: string[];
+  techStack?: string[];
+  results?: CaseStudyResult[];
+  testimonial?: { quote: string; author: string; role: string };
 };
 
 export const PROJECTS_DATA = {
@@ -402,11 +572,13 @@ export const PROJECTS_DATA = {
   description: "Real software solutions shipped for high-growth startups and global enterprises.",
   cta: {
     label: "Explore all case studies",
-    href: "/contact",
+    href: "/case-studies",
   },
   projects: [
     {
+      slug: "hrm-enterprise-suite",
       title: "HRM Enterprise Suite",
+      client: "WorkSphere Global",
       category: "Cloud SaaS Platform",
       description:
         "A comprehensive workforce platform managing employee onboarding, automated payroll calculations, and compliance reporting.",
@@ -416,7 +588,9 @@ export const PROJECTS_DATA = {
       highlights: ["99.99% Uptime", "Sub-40ms Query Speed", "SOC2 Compliant"],
     },
     {
+      slug: "smart-delivery-super-app",
       title: "Smart Delivery Super App",
+      client: "SpeediX Express",
       category: "Mobile & Logistics",
       description:
         "An on-demand delivery ecosystem featuring multi-vendor routing, live GPS tracking, and instant secure payments.",
@@ -426,7 +600,9 @@ export const PROJECTS_DATA = {
       highlights: ["< 1s Dispatch Latency", "Offline Geofencing", "Multi-Language"],
     },
     {
+      slug: "gto-ai-training-suite",
       title: "GTO AI Training Suite",
+      client: "StratEdge AI",
       category: "AI & Simulation",
       description:
         "An interactive training platform executing real-time strategy simulations with actionable decision insights.",
@@ -436,7 +612,9 @@ export const PROJECTS_DATA = {
       highlights: ["10M+ Sim Runs/Day", "Sub-15ms AI Inference", "Custom ML Model"],
     },
     {
+      slug: "compliance-automation-suite",
       title: "Compliance Automation Suite",
+      client: "VeriComply Global",
       category: "Fintech & Regulatory",
       description:
         "A compliance automation engine analyzing cross-border transactions against international regulatory policies.",
@@ -450,6 +628,32 @@ export const PROJECTS_DATA = {
 
 export const PROJECTS = PROJECTS_DATA.projects;
 export type Project = ProjectItem;
+
+export const CASE_STUDIES_PAGE_DATA = {
+  meta: {
+    title: "Explore All Case Studies & Projects | Devtor360",
+    description: "Browse our complete catalog of delivered software platforms, mobile applications, AI systems, and cloud architectures built for high-growth companies.",
+  },
+  hero: {
+    badge: "PROVEN DELIVERABLES & CASE STUDIES",
+    headlinePrefix: "Engineering Scalable Software That ",
+    headlineHighlight: "Drives Measurable Growth",
+    description: "Explore our archive of production platforms, mobile ecosystems, and enterprise architectures delivered across 15+ industry sectors.",
+    stats: [
+      { value: "137+", label: "Projects Delivered", detail: "Across Web, Mobile & AI" },
+      { value: "99.99%", label: "Average SLA Uptime", detail: "High-Availability Clusters" },
+      { value: "$500M+", label: "Client GMV Processed", detail: "Secure Financial Scale" },
+      { value: "100%", label: "On-Time Sprint Delivery", detail: "Agile 2-Week Cadence" },
+    ],
+  },
+  filterCategories: [
+    "All",
+    "Technology",
+    "Commerce",
+    "Health & Finance",
+    "Hospitality",
+  ],
+};
 
 // ─── 8. Tech Stack ───────────────────────────────────────────────────────────
 
@@ -491,7 +695,6 @@ export type ProcessStep = {
   step: string;
   title: string;
   description: string;
-  timeline: string;
 };
 
 export const WHY_US_DATA = {
@@ -533,25 +736,21 @@ export const WHY_US_DATA = {
         step: "01",
         title: "Discovery & Blueprint",
         description: "We map user journeys, technical requirements, and define the complete architecture plan.",
-        timeline: "Week 1",
       },
       {
         step: "02",
         title: "Agile Sprint Builds",
         description: "2-week sprint cycles with live staging previews, rapid feedback, and continuous progress.",
-        timeline: "Weeks 2–5",
       },
       {
         step: "03",
         title: "Quality Assurance",
         description: "Comprehensive end-to-end testing, security audits, and cross-device performance optimization.",
-        timeline: "Week 6",
       },
       {
         step: "04",
         title: "Launch & Support",
         description: "Smooth production deployment, DNS setup, and dedicated post-launch support retainers.",
-        timeline: "Ongoing",
       },
     ] as ProcessStep[],
   },
