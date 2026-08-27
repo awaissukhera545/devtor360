@@ -5,10 +5,11 @@ import { MapPin } from "lucide-react";
 
 // ── Map config ────────────────────────────────────────────────────────────────
 const OFFICE = {
-  lat: 32.0835,
-  lng: -81.0998,
+  lat: 31.4695,
+  lng: 74.2728,
   label: "Devtor360 HQ",
-  address: "Savannah, Georgia, USA",
+  address: "2nd Floor, HBFC Building, Johar Town, Lahore, Pakistan",
+  detail: "Back side of Dr's Hospital",
 };
 
 // ── Leaflet Map (browser-only) ────────────────────────────────────────────────
@@ -76,11 +77,12 @@ export default function ContactMap() {
       L.marker([OFFICE.lat, OFFICE.lng], { icon })
         .addTo(map)
         .bindPopup(
-          `<div style="font-family:inherit;padding:4px 2px;min-width:160px;">
+          `<div style="font-family:inherit;padding:4px 2px;min-width:180px;">
             <p style="font-weight:700;font-size:14px;color:#090e17;margin:0 0 4px;">${OFFICE.label}</p>
+            <p style="font-size:12px;color:#64748b;margin:0 0 2px;">${OFFICE.detail}</p>
             <p style="font-size:12px;color:#64748b;margin:0;">${OFFICE.address}</p>
           </div>`,
-          { maxWidth: 220, className: "devtor-popup" }
+          { maxWidth: 240, className: "devtor-popup" }
         )
         .openPopup();
     }
@@ -122,9 +124,14 @@ export default function ContactMap() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary">
               <MapPin size={12} className="text-white" />
             </span>
-            <span className="text-xs font-semibold text-foreground">
-              {OFFICE.address}
-            </span>
+            <div>
+              <span className="block text-xs font-semibold text-foreground leading-tight">
+                {OFFICE.detail}
+              </span>
+              <span className="block text-[10px] text-muted-foreground leading-tight">
+                {OFFICE.address}
+              </span>
+            </div>
           </div>
 
           {/* Leaflet mount point */}
