@@ -1,136 +1,152 @@
+"use client";
+
 import Image from "next/image";
-import { Mail, Phone } from "lucide-react";
-
-const SERVICES = [
-  "Custom Software Development",
-  "MVP Development",
-  "Mobile/Web App Development",
-  "Shopify Development",
-  "Design Services",
-];
-
-const SOCIAL_LINKS = [
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/company/devtor360",
-    path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.15c0-1.47-.03-3.36-2.05-3.36-2.06 0-2.37 1.6-2.37 3.26V21h-4V9Z",
-  },
-  {
-    label: "Facebook",
-    href: "#",
-    path: "M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.93.26-1.56 1.6-1.56H16.7V3.3c-.27-.03-1.2-.12-2.28-.12-2.26 0-3.8 1.38-3.8 3.9v2.7H8v3.2h2.6v8h2.9Z",
-  },
-  {
-    label: "Instagram",
-    href: "#",
-    path: "M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6ZM12 2c-2.72 0-3.06.01-4.13.06-1.06.05-1.79.22-2.43.47-.66.26-1.22.6-1.77 1.16a4.9 4.9 0 0 0-1.16 1.77c-.25.64-.42 1.37-.47 2.43C2 8.94 2 9.28 2 12s.01 3.06.06 4.13c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.64.25 1.37.42 2.43.47C8.94 22 9.28 22 12 22s3.06-.01 4.13-.06c1.06-.05 1.79-.22 2.43-.47a4.9 4.9 0 0 0 1.77-1.16 4.9 4.9 0 0 0 1.16-1.77c.25-.64.42-1.37.47-2.43.05-1.07.06-1.41.06-4.13s-.01-3.06-.06-4.13c-.05-1.06-.22-1.79-.47-2.43a4.9 4.9 0 0 0-1.16-1.77 4.9 4.9 0 0 0-1.77-1.16c-.64-.25-1.37-.42-2.43-.47C15.06 2.01 14.72 2 12 2Zm0 5.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm5.65-.25a1.03 1.03 0 1 1-2.05 0 1.03 1.03 0 0 1 2.05 0Z",
-  },
-  {
-    label: "Twitter",
-    href: "#",
-    path: "M22 5.9c-.7.32-1.46.53-2.25.63a3.9 3.9 0 0 0 1.72-2.16 7.8 7.8 0 0 1-2.48.95A3.9 3.9 0 0 0 12.2 8.6c0 .3.04.6.1.89A11.05 11.05 0 0 1 4.1 4.6a3.9 3.9 0 0 0 1.2 5.2 3.9 3.9 0 0 1-1.76-.49v.05a3.9 3.9 0 0 0 3.12 3.82c-.55.15-1.13.17-1.72.06a3.9 3.9 0 0 0 3.64 2.7A7.83 7.83 0 0 1 2 17.5a11.03 11.03 0 0 0 5.97 1.75c7.17 0 11.1-5.94 11.1-11.09l-.01-.5A7.9 7.9 0 0 0 22 5.9Z",
-  },
-  {
-    label: "YouTube",
-    href: "#",
-    path: "M23 12s0-3.36-.43-4.98a2.94 2.94 0 0 0-2.07-2.07C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.5.45c-.99.27-1.8 1.08-2.07 2.07C1 8.64 1 12 1 12s0 3.36.43 4.98c.27.99 1.08 1.8 2.07 2.07C5.1 19.5 12 19.5 12 19.5s6.9 0 8.5-.45a2.94 2.94 0 0 0 2.07-2.07C23 15.36 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z",
-  },
-];
+import Link from "next/link";
+import { useState } from "react";
+import { Mail, Phone, CheckCircle2, Send } from "lucide-react";
+import { SITE_META, SERVICES_DATA, NAV_LINKS, FOOTER_DATA } from "@/lib/site-data";
 
 export default function Footer() {
+  const { ctaBanner, brandDescription, navigationHeading, servicesHeading, contactHeading, socialLinks, legalLinks, copyrightText } = FOOTER_DATA;
+  const [emailInput, setEmailInput] = useState("");
+  const [isSent, setIsSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (emailInput.trim()) {
+      setIsSent(true);
+      setTimeout(() => setIsSent(false), 4000);
+      setEmailInput("");
+    }
+  };
+
   return (
-    <footer className="bg-dark text-center text-dark-foreground lg:text-left">
-      <div className="mx-auto grid max-w-content justify-items-center gap-10 px-6 py-12 sm:grid-cols-2 sm:py-14 lg:grid-cols-[1.3fr_1fr_1fr] lg:justify-items-start lg:gap-12 lg:px-8 lg:py-16">
-        {/* Column 1 */}
-        <div className="flex flex-col items-center lg:items-start">
-          <div className="relative h-10 w-40 sm:h-12 sm:w-48">
-            <Image
-              src="/devtor360-light.svg"
-              alt="Devtor360-logo"
-              className="object-contain"
-              fill
+    <footer className="border-t border-border bg-[#090e17] text-white">
+      <div className="mx-auto max-w-content px-6 py-8 sm:py-10 lg:px-8 lg:py-12">
+        {/* ── Availability & Quick Contact Banner ─────────────────────── */}
+        <div className="mb-8 rounded-2xl border border-slate-800 bg-[#0c1322] p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+          <div>
+            <h3 className="text-lg font-bold text-white sm:text-xl font-display">
+              {ctaBanner.headline}
+            </h3>
+            <p className="mt-1 text-xs sm:text-sm text-slate-400">
+              {ctaBanner.descriptionPrefix}{SITE_META.responseTime} directly from our product leads.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-2 max-w-md w-full">
+            <input
+              type="email"
+              required
+              value={emailInput}
+              onChange={(e) => setEmailInput(e.target.value)}
+              placeholder={ctaBanner.placeholder}
+              className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-primary focus:outline-none"
             />
-          </div>
-
-          <p className="mt-4 mb-8 max-w-xs text-sm leading-relaxed text-white/70">
-            Say goodbye to long development cycles and save time, money, and
-            opportunity cost with Devtor360.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block rounded-md border border-primary bg-accent px-7 py-3.5 text-base font-semibold text-brand-700 transition-colors hover:bg-brand-100"
-          >
-            Contact Us
-          </a>
+            <button
+              type="submit"
+              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-brand hover:bg-brand-600 transition-all"
+            >
+              <span>{isSent ? ctaBanner.buttonSuccessText : ctaBanner.buttonText}</span>
+              {isSent ? <CheckCircle2 size={14} /> : <Send size={14} />}
+            </button>
+          </form>
         </div>
 
-        {/* Column 2 */}
-        <div className="flex flex-col items-center lg:items-start">
-          <h3 className="text-xl font-bold text-white sm:text-2xl">Services</h3>
-          <ul className="mt-4 space-y-3 text-base text-white/70 sm:text-lg">
-            {SERVICES.map((service) => (
-              <li key={service}>{service}</li>
+        {/* ── 4-Column Navigation Grid ────────────────────────────────── */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:gap-8">
+          {/* Brand */}
+          <div>
+            <Link href="/#home" className="flex items-center">
+              <div className="relative h-8 w-32 sm:h-9 sm:w-40">
+                <Image
+                  src={SITE_META.logo.light}
+                  alt={SITE_META.logo.alt}
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+            </Link>
+
+            <p className="mt-3 max-w-sm text-xs sm:text-sm leading-relaxed text-slate-400">
+              {brandDescription}
+            </p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+              {navigationHeading}
+            </h4>
+            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-400">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-primary transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+              {servicesHeading}
+            </h4>
+            <ul className="mt-3 space-y-2 text-xs sm:text-sm text-slate-400">
+              {SERVICES_DATA.slice(0, 5).map((service) => (
+                <li key={service.id}>
+                  <a href="/#services" className="hover:text-primary transition-colors">
+                    {service.tabLabel}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+              {contactHeading}
+            </h4>
+            <div className="mt-3 space-y-2.5 text-xs sm:text-sm text-slate-400">
+              <a
+                href={`mailto:${SITE_META.email}`}
+                className="flex items-center gap-2.5 text-slate-300 hover:text-primary transition-colors"
+              >
+                <Mail size={15} className="text-primary shrink-0" />
+                <span>{SITE_META.email}</span>
+              </a>
+              <a
+                href={`tel:${SITE_META.phoneClean}`}
+                className="flex items-center gap-2.5 text-slate-300 hover:text-primary transition-colors"
+              >
+                <Phone size={15} className="text-primary shrink-0" />
+                <span>{SITE_META.phone}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Bottom Bar ─────────────────────────────────────────────── */}
+        <div className="mt-8 pt-5 border-t border-slate-800 flex flex-col items-center justify-between gap-3 sm:flex-row text-xs text-slate-500">
+          <p>&copy; {new Date().getFullYear()} {SITE_META.company} {copyrightText}</p>
+          <div className="flex items-center gap-5">
+            {legalLinks.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-slate-300 transition-colors">
+                {link.label}
+              </a>
             ))}
-          </ul>
-        </div>
-
-        {/* Column 3 */}
-        <div className="flex flex-col items-center lg:items-start">
-          <h3 className="text-xl font-bold text-white sm:text-2xl lg:text-3xl">
-            Available For Help
-          </h3>
-          <p className="mt-4 text-sm text-white/70">
-            24 Hours A Day &ndash; 5 Days A Week
-          </p>
-          <div className="mt-4 flex flex-col items-center space-y-3 text-base sm:text-lg lg:items-start">
-            <a
-              href="mailto:info@devtor360.com"
-              className="flex items-center gap-3 text-white/90 hover:text-white"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10">
-                <Mail size={16} />
-              </span>
-              info@devtor360.com
-            </a>
-            <a
-              href="tel:+19123456789"
-              className="flex items-center gap-3 text-white/90 hover:text-white"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-md bg-white/10">
-                <Phone size={16} />
-              </span>
-              +1-912-345-6789
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-content flex-col items-center gap-5 px-6 py-6 text-center text-sm text-white/70 lg:flex-row lg:justify-between lg:gap-4 lg:px-8 lg:text-left">
-          <p>&copy; devtor360 Inc. {new Date().getFullYear()}. All rights reserved.</p>
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-            <a href="/terms_and_conditions" className="py-1.5 hover:text-white">
-              Terms &amp; Conditions
-            </a>
-            <a href="/privacy_policy" className="py-1.5 hover:text-white">
-              Privacy Policy
-            </a>
-            <div className="flex items-center gap-3">
-              {SOCIAL_LINKS.map((social) => (
+            <div className="flex items-center gap-2 ml-2">
+              {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                  className="flex h-6 w-6 items-center justify-center rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:bg-primary hover:text-white transition-colors"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width={14}
-                    height={14}
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
+                  <svg viewBox="0 0 24 24" width={12} height={12} fill="currentColor">
                     <path d={social.path} />
                   </svg>
                 </a>

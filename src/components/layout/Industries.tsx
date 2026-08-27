@@ -1,126 +1,134 @@
-type Industry = {
-  icon: string;
-  title: string;
-  description: string;
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { INDUSTRIES_DATA, type IndustryCategory } from "@/lib/site-data";
+
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.05 } },
 };
 
-const INDUSTRIES: Industry[] = [
-  {
-    icon: "/icons/industries/edtech.svg",
-    title: "EdTech",
-    description:
-      "Learning platforms, virtual classrooms, and assessment tools that scale with your students.",
-  },
-  {
-    icon: "/icons/industries/health-tech.svg",
-    title: "Health Tech",
-    description:
-      "Patient portals, telehealth, and compliant systems that keep care connected and secure.",
-  },
-  {
-    icon: "/icons/industries/travel-tech.svg",
-    title: "Travel Tech",
-    description:
-      "Booking engines, itinerary tools, and platforms that turn trips into seamless journeys.",
-  },
-  {
-    icon: "/icons/industries/agr-tech.svg",
-    title: "Agr Tech",
-    description:
-      "Farm monitoring, supply chain tracking, and data tools that grow yields and margins.",
-  },
-  {
-    icon: "/icons/industries/prop-tech.svg",
-    title: "Prop Tech",
-    description:
-      "Listing portals, tenant platforms, and management tools built for modern real estate.",
-  },
-  {
-    icon: "/icons/industries/blockchain.svg",
-    title: "Blockchain",
-    description:
-      "Smart contracts, wallets, and decentralised apps engineered for trust and transparency.",
-  },
-  {
-    icon: "/icons/industries/autotech.svg",
-    title: "AutoTech",
-    description:
-      "Fleet management, connected vehicle apps, and dealership platforms that keep you moving.",
-  },
-  {
-    icon: "/icons/industries/fmcg.svg",
-    title: "FMCG",
-    description:
-      "Distribution, inventory, and order systems that keep fast-moving goods moving faster.",
-  },
-  {
-    icon: "/icons/industries/retail-tech.svg",
-    title: "Retail Tech",
-    description:
-      "Storefronts, POS integrations, and loyalty tools that lift conversions and repeat sales.",
-  },
-  {
-    icon: "/icons/industries/fintech.svg",
-    title: "Fintech",
-    description:
-      "Payments, lending, and compliant financial products built on secure, scalable rails.",
-  },
-];
-
-const LG_COLUMNS = 4;
-
-const COL_START = [
-  "lg:col-start-1",
-  "lg:col-start-2",
-  "lg:col-start-3",
-  "lg:col-start-4",
-];
+const cardVariants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+};
 
 export default function Industries() {
-  const leftover = INDUSTRIES.length % LG_COLUMNS;
-  const firstOfLastRow = leftover === 0 ? -1 : INDUSTRIES.length - leftover;
-  const lastRowStart = COL_START[Math.floor((LG_COLUMNS - leftover) / 2)];
+  const { eyebrow, headline, description, tabs, industries, caseStudyLabel } = INDUSTRIES_DATA;
+  const [activeTab, setActiveTab] = useState<IndustryCategory>(tabs[0] || "Technology");
+
+  const visible = industries.filter((i) => i.category === activeTab);
 
   return (
     <section
       id="industries"
-      aria-label="Industries we cater"
-      className="bg-muted py-16 sm:py-20 lg:py-24"
+      aria-label="Industry verticals"
+      className="bg-slate-50/60 py-8 sm:py-12 lg:py-14 border-y border-border/70"
     >
       <div className="mx-auto max-w-content px-6 text-center lg:px-8">
-        <p className="text-eyebrow uppercase text-primary">Industries</p>
-        <h2 className="mt-3 text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] sm:leading-[1.3] lg:text-[2.5rem] lg:leading-normal">
-          Industries We Cater
-        </h2>
-
-        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4">
-          {INDUSTRIES.map((industry, index) => {
-            return (
-              <div
-                key={industry.title}
-                className={`rounded-xl border border-border bg-card p-5 text-center flex flex-col items-center lg:items-start lg:text-left sm:p-6 ${
-                  index === firstOfLastRow ? lastRowStart : ""
-                }`}
-              >
-                <img
-                  src={industry.icon}
-                  alt=""
-                  width={70}
-                  height={70}
-                  className="h-14 w-14 sm:h-17.5 sm:w-17.5"
-                />
-
-                <h3 className="mt-4 text-lg font-bold text-foreground">
-                  {industry.title}
-                </h3>
-
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {industry.description}
-                </p>
-              </div>
-            );
-          })}
+        {/* ── Eyebrow ─────────────────────────────────────────────────── */}
+        <div className="flex items-center justify-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-primary" />
+          <span className="text-xs font-mono font-bold tracking-widest text-primary uppercase">
+            {eyebrow}
+          </span>
         </div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="mt-2 text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-[2.25rem] lg:text-[2.65rem]"
+        >
+          {headline}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.06 }}
+          className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base"
+        >
+          {description}
+        </motion.p>
+
+        {/* ── Tabs ───────────────────────────────────────────────────── */}
+        <div className="mt-5 flex flex-wrap justify-center gap-1.5 sm:mt-6 sm:gap-2">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setActiveTab(tab)}
+              className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-200 ${
+                activeTab === tab
+                  ? "bg-primary text-primary-foreground shadow-brand"
+                  : "border border-border bg-white text-muted-foreground hover:border-primary hover:text-foreground"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {/* ── Cards Grid ─────────────────────────────────────────────── */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            exit={{ opacity: 0 }}
+            className="mt-6 grid gap-4 sm:mt-7 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4"
+          >
+            {visible.map((industry) => (
+              <motion.div
+                key={industry.title}
+                variants={cardVariants}
+                layout
+                className="spotlight-card rounded-2xl p-4 sm:p-5 text-left flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 p-2">
+                      <Image
+                        src={industry.icon}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                    <span className="rounded-md bg-slate-100 px-2 py-0.5 font-mono text-[10px] font-bold text-slate-700">
+                      {industry.metric}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-3.5 text-base font-bold text-foreground">
+                    {industry.title}
+                  </h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                    {industry.description}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-2.5 border-t border-border/50 flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold text-primary">
+                    {industry.category}
+                  </span>
+                  <a
+                    href="/contact"
+                    className="text-xs font-bold text-foreground hover:text-primary transition-colors"
+                  >
+                    {caseStudyLabel}
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

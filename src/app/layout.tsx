@@ -3,6 +3,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { SITE_META } from "@/lib/site-data";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -10,11 +11,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Devtor360",
-  description: "Turning Complexity into digital Excellence",
+  title: SITE_META.title,
+  description: SITE_META.description,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -24,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         {children}
         <Footer />
-        </body>
+      </body>
     </html>
   );
 }

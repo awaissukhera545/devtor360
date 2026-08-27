@@ -1,35 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --gradient-sky-start: #006BF2;
-  --gradient-sky-end: #77D5FF;
+  --brand-50: #eff6ff;
+  --brand-100: #dbeafe;
+  --brand-200: #bfdbfe;
+  --brand-300: #93c5fd;
+  --brand-400: #60a5fa;
+  --brand-500: #006bf2;
+  --brand-600: #0056c7;
+  --brand-700: #00439d;
+  --brand-800: #003378;
+  --brand-900: #081d45;
 
-  --brand-50: #eaf4fe;
-  --brand-100: #d3e9fd;
-  --brand-200: #a8d3fb;
-  --brand-300: #6fb6f7;
-  --brand-400: #3b9bf2;
-  --brand-500: #1289e6;
-  --brand-600: #0b6dc4;
-  --brand-700: #024890;
-  --brand-800: #0b3f70;
-  --brand-900: #0c2c50;
-
-  --navy-500: #12417f;
-  --navy-600: #0e3468;
-  --navy-700: #0a2a5e;
-  --navy-800: #0b1f3f;
-  --navy-900: #071730;
+  --navy-500: #1e293b;
+  --navy-600: #0f172a;
+  --navy-700: #090e17;
+  --navy-800: #060a12;
+  --navy-900: #03060a;
 
   --background: #ffffff;
-  --foreground: #0b1f3f;
+  --foreground: #090e17;
   --card: #ffffff;
   --card-foreground: var(--foreground);
   --popover: #ffffff;
   --popover-foreground: var(--foreground);
-  --muted: #f9fafb;
+  --muted: #f8fafc;
   --muted-foreground: #64748b;
-  --subtle: #f9fafc;
+  --subtle: #f1f5f9;
   --border: #e2e8f0;
   --input: var(--border);
   --ring: var(--brand-500);
@@ -40,19 +37,19 @@
   --secondary-foreground: var(--foreground);
   --accent: var(--brand-50);
   --accent-foreground: var(--brand-700);
-  --dark: var(--brand-700);
+  --dark: var(--navy-900);
   --dark-foreground: #ffffff;
 
-  --success: #16a34a;
+  --success: #10b981;
   --success-foreground: #ffffff;
-  --warning: #d97706;
+  --warning: #f59e0b;
   --warning-foreground: #ffffff;
-  --destructive: #dc2626;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --info: var(--brand-500);
   --info-foreground: #ffffff;
 
-  --radius: 0.75rem;
+  --radius: 0.875rem;
 }
 
 @theme inline {
@@ -96,58 +93,38 @@
   --color-brand-800: var(--brand-800);
   --color-brand-900: var(--brand-900);
 
-  --color-navy-500: var(--navy-500);
-  --color-navy-600: var(--navy-600);
-  --color-navy-700: var(--navy-700);
-  --color-navy-800: var(--navy-800);
-  --color-navy-900: var(--navy-900);
-
-  --color-sky-gradient-start: var(--gradient-sky-start);
-  --color-sky-gradient-end: var(--gradient-sky-end);
-
   --font-sans: var(--font-dm-sans);
   --font-display: var(--font-dm-sans);
 
-  --text-eyebrow: 1rem;
-  --text-eyebrow--line-height: 1.2;
-  --text-eyebrow--letter-spacing: 0.08em;
-  --text-eyebrow--font-weight: 600;
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.25;
+  --text-eyebrow--letter-spacing: 0.12em;
+  --text-eyebrow--font-weight: 700;
 
-  --text-display: 3rem;
-  --text-expertise-display: 4rem;
+  --text-display: 3.75rem;
   --text-display--line-height: 1.08;
   --text-display--letter-spacing: -0.035em;
-  --text-display--font-weight: 700;
+  --text-display--font-weight: 800;
 
-  --text-display-sm: 2.125rem;
+  --text-display-sm: 2.25rem;
   --text-display-sm--line-height: 1.15;
   --text-display-sm--letter-spacing: -0.03em;
-  --text-display-sm--font-weight: 700;
+  --text-display-sm--font-weight: 800;
 
-  --text-display-md: 2.75rem;
+  --text-display-md: 3.125rem;
   --text-display-md--line-height: 1.1;
-  --text-display-md--letter-spacing: -0.032em;
-  --text-display-md--font-weight: 700;
+  --text-display-md--letter-spacing: -0.035em;
+  --text-display-md--font-weight: 800;
 
-  --text-stat: 4.8125rem;
-  --text-stat--line-height: 1;
-  --text-stat--letter-spacing: -0.03em;
-  --text-stat--font-weight: 700;
-
-  --radius-sm: calc(var(--radius) - 6px);
-  --radius-md: calc(var(--radius) - 4px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 12px);
-
-  --shadow-xs: 0 1px 2px 0 rgb(11 31 63 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(11 31 63 / 0.08), 0 1px 2px -1px rgb(11 31 63 / 0.06);
-  --shadow-md: 0 6px 16px -4px rgb(11 31 63 / 0.10);
-  --shadow-lg: 0 16px 40px -12px rgb(11 31 63 / 0.16);
-  --shadow-brand: 0 8px 24px -8px rgb(18 137 230 / 0.45);
+  --shadow-xs: 0 1px 2px 0 rgb(9 14 23 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(9 14 23 / 0.06), 0 1px 2px -1px rgb(9 14 23 / 0.04);
+  --shadow-md: 0 8px 24px -6px rgb(9 14 23 / 0.06);
+  --shadow-lg: 0 16px 40px -12px rgb(9 14 23 / 0.08);
+  --shadow-dock: 0 20px 48px -12px rgb(9 14 23 / 0.08), 0 0 0 1px rgb(9 14 23 / 0.04);
+  --shadow-brand: 0 8px 24px -6px rgb(0 107 242 / 0.35);
 
   --spacing-section: 6rem;
-  --container-content: 75rem;
+  --container-content: 76rem;
 }
 
 @layer base {
@@ -155,11 +132,9 @@
     border-color: var(--color-border);
   }
   html {
-    /* Stop iOS from inflating text when the device is rotated to landscape. */
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
   }
-  /* The header is sticky (h-20), so in-page anchors need to clear it. */
   section[id] {
     scroll-margin-top: 5rem;
   }
@@ -173,7 +148,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     color: var(--color-foreground);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
   :focus-visible {
@@ -184,76 +159,91 @@
     background-color: var(--color-brand-500);
     color: #fff;
   }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
 }
 
 @layer utilities {
-  .bg-sky-gradient {
-    background-image: linear-gradient(
-      135deg,
-      var(--color-sky-gradient-start) 0%,
-      var(--color-sky-gradient-end) 100%
+  /* ── Subtle Hero Background Gradient ────────────────────────────────── */
+  .bg-subtle-gradient {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(0, 107, 242, 0.08) 0%,
+      rgba(239, 246, 255, 0.5) 40%,
+      transparent 80%
     );
   }
 
-  .bg-brand-gradient {
-    background-image: linear-gradient(
-      100deg,
-      var(--color-navy-700) 0%,
-      var(--color-brand-700) 45%,
-      var(--color-brand-500) 100%
-    );
-  }
-
+  /* ── Clean Gradient Text ────────────────────────────────────────────── */
   .text-brand-gradient {
-    background-image: linear-gradient(
-      90deg,
-      var(--color-brand-600),
-      var(--color-brand-400)
-    );
+    background: linear-gradient(135deg, #006bf2 0%, #38bdf8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  .bracket-frame {
-    position: relative;
+  /* ── Minimal Card Hover ─────────────────────────────────────────────── */
+  .minimal-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .bracket-frame::before, .bracket-frame::after {
-    content: "";
-    position: absolute;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 5px solid var(--color-brand-500);
-  }
-  .bracket-frame::before {
-    top: 0;
-    left: 0;
-    border-right: 0;
-    border-bottom: 0;
-  }
-  .bracket-frame::after {
-    bottom: 0;
-    right: 0;
-    border-left: 0;
-    border-top: 0;
+  .minimal-card:hover {
+    border-color: rgba(0, 107, 242, 0.35);
+    box-shadow: 0 12px 32px -8px rgba(0, 107, 242, 0.10);
+    transform: translateY(-2px);
   }
 
+  /* ── Spotlight / Feature Card ──────────────────────────────────────── */
+  .spotlight-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .spotlight-card:hover {
+    border-color: rgba(0, 107, 242, 0.35);
+    box-shadow: 0 12px 32px -8px rgba(0, 107, 242, 0.10);
+    transform: translateY(-2px);
+  }
+
+  /* ── Infinite Marquee ───────────────────────────────────────────────── */
   @keyframes marquee-left {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to   { transform: translateX(-50%); }
   }
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
   .animate-marquee {
-    animation: marquee-left 28s linear infinite;
+    animation: marquee-left 32s linear infinite;
   }
-  .animate-marquee:hover {
+  .animate-marquee-reverse {
+    animation: marquee-right 32s linear infinite;
+  }
+  .animate-marquee-slow {
+    animation: marquee-left 48s linear infinite;
+  }
+  .animate-marquee:hover,
+  .animate-marquee-reverse:hover,
+  .animate-marquee-slow:hover {
     animation-play-state: paused;
+  }
+
+  .marquee-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
   }
 
   .scrollbar-none {
@@ -264,10 +254,6 @@
     display: none;
   }
 
-  /*
-   * Beyond laptop widths the 75rem container strands content in the middle of
-   * the screen. Widen it past 1700px only, so no laptop resolution is affected.
-   */
   @media (min-width: 1700px) {
     .max-w-content {
       max-width: 88rem;

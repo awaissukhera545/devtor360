@@ -2,56 +2,22 @@ import type { Metadata } from "next";
 import { Mail, Phone, Clock, MessageSquare } from "lucide-react";
 import ContactForm from "@/components/layout/ContactForm";
 import FAQs from "@/components/layout/FAQs";
+import { CONTACT_PAGE_DATA } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Devtor360",
-  description:
-    "Talk to the Devtor360 team about your next digital product. Get a free proposal within one business day.",
+  title: CONTACT_PAGE_DATA.meta.title,
+  description: CONTACT_PAGE_DATA.meta.description,
 };
 
-const CONTACT_DETAILS = [
-  {
-    icon: Mail,
-    label: "Email Us",
-    value: "info@devtor360.com",
-    href: "mailto:info@devtor360.com",
-    description: "Drop us a line anytime",
-  },
-  {
-    icon: Phone,
-    label: "Call Us",
-    value: "+1-912-345-6789",
-    href: "tel:+19123456789",
-    description: "Mon to Fri, we are on the line",
-  },
-  {
-    icon: Clock,
-    label: "Working Hours",
-    value: "24 Hours A Day",
-    href: null,
-    description: "5 days a week",
-  },
-];
-
-const PROCESS_STEPS = [
-  {
-    title: "We review your brief",
-    description:
-      "A specialist reads through your goals and prepares the right questions.",
-  },
-  {
-    title: "We schedule a discovery call",
-    description:
-      "A free 30 minute session to align on scope, timeline, and budget.",
-  },
-  {
-    title: "You receive a proposal",
-    description:
-      "A tailored plan with milestones, team structure, and clear pricing.",
-  },
-];
+const ICON_MAP = {
+  Mail,
+  Phone,
+  Clock,
+};
 
 export default function Contact() {
+  const { hero, getInTouch, contactDetails, whatHappensNext } = CONTACT_PAGE_DATA;
+
   return (
     <>
       <section
@@ -64,19 +30,17 @@ export default function Contact() {
               <MessageSquare size={12} className="fill-white text-white" />
             </span>
             <span className="text-sm font-medium text-brand-700">
-              We reply within one business day
+              {hero.badge}
             </span>
           </div>
 
           <h1 className="mx-auto mt-5 max-w-4xl text-[2rem] font-bold leading-tight text-foreground sm:mt-6 sm:text-[2.75rem] lg:text-display">
-            Let&rsquo;s Build Something{" "}
-            <span className="text-brand-500">Exceptional</span>
+            {hero.headlinePrefix}
+            <span className="text-brand-500">{hero.headlineHighlight}</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:mt-6">
-            Tell us about your project and our team will map out the fastest
-            path from idea to launch. No pressure, no obligation &mdash; just a
-            clear plan you can act on.
+            {hero.description}
           </p>
         </div>
       </section>
@@ -85,19 +49,19 @@ export default function Contact() {
         <div className="mx-auto max-w-content px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start lg:gap-12">
             <div>
-              <p className="text-center text-eyebrow uppercase text-primary lg:text-left">Get In Touch</p>
+              <p className="text-center text-eyebrow uppercase text-primary lg:text-left">
+                {getInTouch.eyebrow}
+              </p>
               <h2 className="mt-3 text-center text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] lg:text-left lg:text-[2.5rem]">
-                Talk to a Real Human
+                {getInTouch.headline}
               </h2>
               <p className="mt-4 text-center text-base leading-relaxed text-muted-foreground lg:text-left">
-                Whether you need a full product team or a second opinion on an
-                existing build, we are happy to help you figure out the next
-                step.
+                {getInTouch.description}
               </p>
 
               <div className="mt-8 space-y-4 sm:space-y-5 lg:mt-10">
-                {CONTACT_DETAILS.map((detail) => {
-                  const Icon = detail.icon;
+                {contactDetails.map((detail) => {
+                  const Icon = ICON_MAP[detail.iconName] || Mail;
                   return (
                     <div
                       key={detail.label}
@@ -133,10 +97,10 @@ export default function Contact() {
 
               <div className="mt-8 rounded-2xl border-b-4 border-navy-700 bg-accent p-6 sm:p-7 lg:mt-10">
                 <h3 className="text-xl font-bold text-foreground">
-                  What Happens Next
+                  {whatHappensNext.headline}
                 </h3>
                 <ol className="mt-5 space-y-5">
-                  {PROCESS_STEPS.map((step, index) => (
+                  {whatHappensNext.steps.map((step, index) => (
                     <li key={step.title} className="flex gap-4">
                       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-700 text-sm font-semibold text-white">
                         {index + 1}

@@ -3,23 +3,7 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { CheckCircle2, AlertCircle, Send, Loader2 } from "lucide-react";
-
-const SERVICE_OPTIONS = [
-  "Custom Software Development",
-  "MVP Development",
-  "Mobile/Web App Development",
-  "Shopify Development",
-  "Design Services",
-  "Something Else",
-];
-
-const BUDGET_OPTIONS = [
-  "Under $5,000",
-  "$5,000 – $15,000",
-  "$15,000 – $50,000",
-  "$50,000+",
-  "Not sure yet",
-];
+import { CONTACT_PAGE_DATA } from "@/lib/site-data";
 
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
@@ -33,6 +17,7 @@ const inputClass =
 const labelClass = "mb-2 block text-sm font-semibold text-foreground";
 
 export default function ContactForm() {
+  const { form } = CONTACT_PAGE_DATA;
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -44,9 +29,7 @@ export default function ContactForm() {
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       setStatus("error");
-      setErrorMessage(
-        "Email service is not configured yet. Please reach us at info@devtor360.com."
-      );
+      setErrorMessage(form.errorMissingConfigMessage);
       return;
     }
 
@@ -61,9 +44,7 @@ export default function ContactForm() {
       formRef.current.reset();
     } catch {
       setStatus("error");
-      setErrorMessage(
-        "We could not send your message right now. Please try again or email us at info@devtor360.com."
-      );
+      setErrorMessage(form.errorDefaultMessage);
     }
   }
 
@@ -72,11 +53,10 @@ export default function ContactForm() {
   return (
     <div className="rounded-2xl border border-border bg-card p-5 shadow-md sm:p-8 lg:p-10">
       <h2 className="text-2xl font-bold leading-tight text-foreground sm:text-[1.75rem]">
-        Send Us a Message
+        {form.title}
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        Fill in the form and one of our specialists will get back to you within
-        one business day.
+        {form.description}
       </p>
 
       <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-5 sm:mt-8">
@@ -152,7 +132,7 @@ export default function ContactForm() {
               <option value="" disabled>
                 Select a service
               </option>
-              {SERVICE_OPTIONS.map((service) => (
+              {form.services.map((service) => (
                 <option key={service} value={service}>
                   {service}
                 </option>
@@ -173,7 +153,7 @@ export default function ContactForm() {
               <option value="" disabled>
                 Select a range
               </option>
-              {BUDGET_OPTIONS.map((budget) => (
+              {form.budgets.map((budget) => (
                 <option key={budget} value={budget}>
                   {budget}
                 </option>
@@ -204,18 +184,18 @@ export default function ContactForm() {
           {isSending ? (
             <>
               <Loader2 size={18} className="animate-spin" />
-              Sending...
+              {form.sendingButtonText}
             </>
           ) : (
             <>
               <Send size={18} />
-              Send Message
+              {form.submitButtonText}
             </>
           )}
         </button>
 
         <p aria-live="polite" className="sr-only">
-          {status === "sending" ? "Sending your message" : ""}
+          {status === "sending" ? form.sendingButtonText : ""}
         </p>
 
         {status === "success" && (
@@ -224,10 +204,7 @@ export default function ContactForm() {
             className="flex items-start gap-3 rounded-md border border-success/30 bg-success/10 px-4 py-3 text-sm text-foreground"
           >
             <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-success" />
-            <span>
-              Thanks for reaching out! Your message is on its way and we will
-              reply within one business day.
-            </span>
+            <span>{form.successMessage}</span>
           </div>
         )}
 
@@ -242,11 +219,11 @@ export default function ContactForm() {
         )}
 
         <p className="text-xs leading-relaxed text-muted-foreground">
-          By submitting this form you agree to our{" "}
+          {form.privacyText}
           <a href="/privacy_policy" className="text-primary hover:underline">
-            Privacy Policy
+            {form.privacyLinkText}
           </a>
-          . We never share your details with third parties.
+          {form.privacyPostText}
         </p>
       </form>
     </div>
