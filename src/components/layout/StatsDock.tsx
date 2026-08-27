@@ -87,7 +87,7 @@ function StatDockItem({
 
 export default function StatsDock() {
   return (
-    <section aria-label="Key performance metrics" className="py-6 sm:py-8 bg-transparent">
+    <section aria-label="Key performance metrics" className="hidden sm:block py-6 sm:py-8 bg-transparent">
       <div className="mx-auto max-w-content px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Mail, Phone, Clock, MessageSquare } from "lucide-react";
 import ContactForm from "@/components/layout/ContactForm";
+import ContactMap from "@/components/layout/ContactMap";
 import FAQs from "@/components/layout/FAQs";
 import { CONTACT_PAGE_DATA } from "@/lib/site-data";
+
 
 export const metadata: Metadata = {
   title: CONTACT_PAGE_DATA.meta.title,
@@ -124,6 +126,7 @@ export default function Contact() {
         </div>
       </section>
 
+      <ContactMap />
       <FAQs />
     </>
   );
