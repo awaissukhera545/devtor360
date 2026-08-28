@@ -1,116 +1,218 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   CheckCircle2,
   Zap,
   ShieldCheck,
   Code2,
   Users2,
+  ArrowRight,
+  Sparkles,
+  Terminal,
 } from "lucide-react";
 import { WHY_US_DATA } from "@/lib/site-data";
 
-const PILLAR_ICONS = [Zap, Users2, Code2, ShieldCheck];
+const PILLARS_LIST = [
+  {
+    id: "velocity",
+    step: "01",
+    title: "Fast-Track Velocity",
+    badge: "Day 14 Staging",
+    headline: "Working Builds from Day 14, Not Month 6",
+    metric: "2.4x Faster Time-to-Market",
+    description:
+      "We replace bloated waterfall planning with rapid 2-week agile sprint cycles. You get a working staging environment within your first 14 days and continuous deployments thereafter.",
+    icon: Zap,
+    keyOutcomes: [
+      "Working live staging build delivered on Day 14",
+      "Bi-weekly interactive demo & feedback cadence",
+      "Zero scope creep with time-boxed agile sprints",
+    ],
+    accentGradient: "from-blue-600 to-indigo-600",
+  },
+  {
+    id: "senior-pods",
+    step: "02",
+    title: "Senior Engineering Pods",
+    badge: "Top 3% Talent",
+    headline: "Direct Senior Access — Zero Junior Handoffs",
+    metric: "100% Dedicated Staff Engineers",
+    description:
+      "Your project is engineered directly by seasoned senior architects and staff engineers with 8+ years of enterprise production experience. No bait-and-switch, no junior delegation.",
+    icon: Users2,
+    keyOutcomes: [
+      "Direct daily communication with lead engineers",
+      "Battle-tested enterprise architectural patterns",
+      "High-velocity code reviews and daily CI/CD pushes",
+    ],
+    accentGradient: "from-indigo-600 to-purple-600",
+  },
+  {
+    id: "bespoke-architecture",
+    step: "03",
+    title: "Bespoke Enterprise Architecture",
+    badge: "Zero Cookie-Cutters",
+    headline: "Custom-Engineered for 99.99% Uptime & Scale",
+    metric: "Enterprise Multi-Region Scalability",
+    description:
+      "Every application is custom-architected around your unique domain logic, security requirements, and long-term user scale — no restrictive templates or generic themes.",
+    icon: Code2,
+    keyOutcomes: [
+      "Tailored microservices & modern serverless setups",
+      "Automated auto-scaling infrastructure on AWS/GCP",
+      "Optimized sub-second global response latencies",
+    ],
+    accentGradient: "from-purple-600 to-pink-600",
+  },
+  {
+    id: "code-ownership",
+    step: "04",
+    title: "Complete Code Ownership",
+    badge: "Day 1 GitHub Access",
+    headline: "100% IP Handover — Zero Vendor Lock-In",
+    metric: "Unencumbered Full Repository IP",
+    description:
+      "You own 100% of all intellectual property, source code, CI/CD scripts, and cloud infrastructure from day one with direct GitHub repository access and clean documentation.",
+    icon: ShieldCheck,
+    keyOutcomes: [
+      "Direct GitHub repository access from kickoff day",
+      "Comprehensive API documentation & setup guides",
+      "Clean, maintainable, TypeScript-first codebase",
+    ],
+    accentGradient: "from-blue-600 to-cyan-600",
+  },
+];
 
 export default function WhyChooseUs() {
-  const { eyebrow, headline, description, qualityBadge, pillars, methodology } = WHY_US_DATA;
+  const { eyebrow } = WHY_US_DATA;
+  const [selectedPillarIndex, setSelectedPillarIndex] = useState<number>(0);
+
+  const currentPillar = PILLARS_LIST[selectedPillarIndex];
+  const PillarIcon = currentPillar.icon;
 
   return (
-    <section id="why-us" aria-label="Why choose Devtor360" className="py-8 sm:py-12 lg:py-16 2xl:py-20 bg-slate-50/60 border-t border-border/70">
+    <section id="why-us" aria-label="Why choose Devtor360" className="bg-[#f8fafc] border-t border-border/70 py-8 sm:py-10">
       <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
-        {/* ── Eyebrow & Headline ───────────────────────────────────────── */}
-        <div className="text-center max-w-3xl 2xl:max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-primary" />
-            <span className="text-xs sm:text-sm 2xl:text-base font-bold tracking-wider text-primary uppercase">
-              {eyebrow}
-            </span>
+
+        {/* Top Header */}
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/20 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider mb-2">
+            <Sparkles size={13} className="text-primary" />
+            <span>{eyebrow}</span>
           </div>
 
-          <h2 className="mt-2 text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-[2.25rem] lg:text-[2.65rem] xl:text-[3rem] 2xl:text-[3.5rem]">
-            {headline}
+          <h2 className="text-[1.6rem] sm:text-[2rem] lg:text-[2.4rem] font-extrabold leading-[1.1] text-foreground tracking-tight">
+            <span>Built for Speed,</span>
+            <span className="block text-primary mt-0.5">Engineered for Scale.</span>
           </h2>
-
-          <p className="mt-2 text-sm sm:text-base 2xl:text-lg leading-relaxed text-muted-foreground">
-            {description}
-          </p>
         </div>
 
-        {/* ── 4 Core Value Pillars ─────────────────────────────────────── */}
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:mt-7 sm:gap-5 2xl:gap-7">
-          {pillars.map((pillar, i) => {
-            const Icon = PILLAR_ICONS[i % PILLAR_ICONS.length];
-            return (
-              <motion.div
-                key={pillar.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="rounded-2xl 2xl:rounded-3xl border border-border bg-white p-4 sm:p-5 2xl:p-7 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex h-10 w-10 2xl:h-13 2xl:w-13 items-center justify-center rounded-xl 2xl:rounded-2xl bg-primary/10 text-primary">
-                    <Icon size={20} className="stroke-[2.2] 2xl:w-6 2xl:h-6" />
+        {/* Interactive Dual-Panel Console */}
+        <div className="grid gap-6 lg:grid-cols-[1fr_1.35fr] lg:gap-8 items-stretch">
+          
+          {/* Left Column: Interactive Pillar Selectors */}
+          <div className="flex flex-col gap-3 justify-between">
+            {PILLARS_LIST.map((item, idx) => {
+              const isSelected = selectedPillarIndex === idx;
+              const Icon = item.icon;
+
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setSelectedPillarIndex(idx)}
+                  className={`w-full text-left p-3 rounded-xl border transition-all duration-300 flex items-center justify-between gap-3 ${
+                    isSelected
+                      ? "bg-white border-primary shadow-md ring-2 ring-primary/15 -translate-y-0.5"
+                      : "bg-white/60 border-border/80 hover:bg-white hover:border-primary/40 shadow-2xs"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-all duration-300 ${
+                        isSelected
+                          ? "bg-primary text-white shadow-brand scale-105"
+                          : "bg-slate-100 text-slate-600"
+                      }`}
+                    >
+                      <Icon size={17} className="stroke-[2.2]" />
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black text-primary font-display">
+                        {item.step}
+                      </span>
+                      <h3 className="text-sm font-bold text-foreground">
+                        {item.title}
+                      </h3>
+                    </div>
                   </div>
-                  <h3 className="mt-3.5 2xl:mt-5 text-base 2xl:text-xl font-bold text-foreground">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs sm:text-sm 2xl:text-base leading-relaxed text-muted-foreground">
-                    {pillar.description}
-                  </p>
-                </div>
 
-                <div className="mt-4 pt-2.5 border-t border-border/50 flex items-center gap-1.5 text-xs font-bold text-primary">
-                  <CheckCircle2 size={14} className="text-emerald-500" />
-                  <span>{qualityBadge}</span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* ── 4-Phase Agile Process ────────────────────────────────────── */}
-        <div className="mt-8 sm:mt-10 pt-6 border-t border-border">
-          <div className="text-center max-w-2xl mx-auto mb-6">
-            <span className="text-xs font-bold uppercase tracking-wider text-primary">
-              {methodology.eyebrow}
-            </span>
-            <h3 className="mt-1.5 text-xl font-bold text-foreground sm:text-2xl">
-              {methodology.headline}
-            </h3>
-            <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
-              {methodology.description}
-            </p>
+                  <ArrowRight
+                    size={14}
+                    className={`shrink-0 transition-transform duration-300 ${
+                      isSelected ? "text-primary translate-x-1" : "text-slate-300"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-5">
-            {methodology.process.map((step) => (
-              <div
-                key={step.step}
-                className="relative rounded-2xl border border-border bg-white p-4 sm:p-5 shadow-xs flex flex-col justify-between"
+          {/* Right Column: Dynamic Feature Spotlight Display Card */}
+          <div className="relative rounded-2xl border border-primary/20 bg-white p-5 sm:p-6 shadow-lg flex flex-col justify-between overflow-hidden">
+            {/* Top Right Decorative Pill */}
+            <div className="absolute top-0 right-0 left-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600" />
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPillar.id}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -14 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col justify-between h-full"
               >
                 <div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-extrabold text-primary font-display">
-                      {step.step}
+                  {/* Badge & Metric Ribbon */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <div className="flex items-center gap-2">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20">
+                        <PillarIcon size={18} className="stroke-[2.2]" />
+                      </div>
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-black tracking-wider text-primary uppercase font-display">
+                        <Terminal size={12} />
+                        <span>{currentPillar.badge}</span>
+                      </span>
+                    </div>
+
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-bold text-emerald-700">
+                      <CheckCircle2 size={13} className="text-emerald-600" />
+                      <span>{currentPillar.metric}</span>
                     </span>
                   </div>
 
-                  <h4 className="mt-2.5 text-base font-bold text-foreground">
-                    {step.title}
-                  </h4>
-                  <p className="mt-1 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                    {step.description}
-                  </p>
-                </div>
+                  {/* Headline & Description */}
+                  <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-extrabold text-foreground leading-snug">
+                    {currentPillar.headline}
+                  </h3>
 
-                <div className="mt-4 pt-2.5 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-muted-foreground">
-                  <span>{methodology.deliverableLabel}</span>
-                  <span className="text-emerald-600 font-bold">{methodology.verifiedLabel}</span>
+                  {/* Key Tangible Outcomes Checklist */}
+                  <div className="mt-6 pt-5 border-t border-border/70">
+                    <ul className="space-y-2.5">
+                      {currentPillar.keyOutcomes.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                          <CheckCircle2 size={16} className="text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="leading-tight">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>

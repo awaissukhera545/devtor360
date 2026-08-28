@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Mail, Phone, Clock, MessageSquare } from "lucide-react";
+import { Mail, Phone, Clock, MessageSquare, Calendar, ArrowUpRight } from "lucide-react";
 import ContactForm from "@/components/layout/ContactForm";
 import ContactMap from "@/components/layout/ContactMap";
 import FAQs from "@/components/layout/FAQs";
 import { CONTACT_PAGE_DATA } from "@/lib/site-data";
-
 
 export const metadata: Metadata = {
   title: CONTACT_PAGE_DATA.meta.title,
@@ -47,80 +46,88 @@ export default function Contact() {
         </div>
       </section>
 
-      <section aria-label="Contact details and form" className="py-16 sm:py-20 lg:py-24">
+      <section aria-label="Contact details and form" className="pt-10 pb-4 sm:pt-14 sm:pb-6 lg:pt-16 lg:pb-8">
         <div className="mx-auto max-w-content px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start lg:gap-12">
-            <div>
-              <p className="text-center text-eyebrow uppercase text-primary lg:text-left">
-                {getInTouch.eyebrow}
-              </p>
-              <h2 className="mt-3 text-center text-[1.875rem] font-bold leading-tight text-foreground sm:text-[2.25rem] lg:text-left lg:text-[2.5rem]">
-                {getInTouch.headline}
-              </h2>
-              <p className="mt-4 text-center text-base leading-relaxed text-muted-foreground lg:text-left">
-                {getInTouch.description}
-              </p>
-
-              <div className="mt-8 space-y-4 sm:space-y-5 lg:mt-10">
-                {contactDetails.map((detail) => {
-                  const Icon = ICON_MAP[detail.iconName] || Mail;
-                  return (
-                    <div
-                      key={detail.label}
-                      className="flex items-start gap-4 rounded-xl border border-border bg-card p-5 shadow-xs transition-shadow hover:shadow-md"
-                    >
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-primary">
-                        <Icon size={18} />
-                      </span>
-                      <div>
-                        <h3 className="text-base font-bold text-foreground">
-                          {detail.label}
-                        </h3>
-                        {detail.href ? (
-                          <a
-                            href={detail.href}
-                            className="mt-1 block text-lg font-semibold text-primary hover:text-brand-600"
-                          >
-                            {detail.value}
-                          </a>
-                        ) : (
-                          <p className="mt-1 text-lg font-semibold text-brand-700">
-                            {detail.value}
-                          </p>
-                        )}
-                        <p className="mt-1 text-sm text-muted-foreground">
-                          {detail.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.35fr] lg:gap-10 items-stretch">
+            {/* Left Column: Details & SLA */}
+            <div className="flex flex-col justify-between h-full py-1">
+              <div>
+                <p className="text-center text-xs font-bold font-mono uppercase tracking-widest text-primary lg:text-left">
+                  {getInTouch.eyebrow}
+                </p>
+                <h2 className="mt-2 text-center text-2xl font-extrabold leading-tight text-foreground sm:text-3xl lg:text-left lg:text-[2.2rem]">
+                  {getInTouch.headline}
+                </h2>
+                <p className="mt-2 text-center text-sm leading-relaxed text-muted-foreground lg:text-left">
+                  {getInTouch.description}
+                </p>
               </div>
 
-              {/* <div className="mt-8 rounded-2xl border-b-4 border-navy-700 bg-accent p-6 sm:p-7 lg:mt-10">
-                <h3 className="text-xl font-bold text-foreground">
-                  {whatHappensNext.headline}
-                </h3>
-                <ol className="mt-5 space-y-5">
-                  {whatHappensNext.steps.map((step, index) => (
-                    <li key={step.title} className="flex gap-4">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-700 text-sm font-semibold text-white">
-                        {index + 1}
-                      </span>
-                      <div>
-                        <p className="font-semibold text-foreground">
-                          {step.title}
+              {/* Contact Details Cards — evenly distributed */}
+              {contactDetails.map((detail) => {
+                const Icon = ICON_MAP[detail.iconName] || Mail;
+                return (
+                  <div
+                    key={detail.label}
+                    className="flex items-center gap-4 rounded-xl border border-border bg-white p-4 shadow-xs transition-all hover:border-primary/40 hover:shadow-sm"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <Icon size={18} />
+                    </span>
+                    <div>
+                      <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        {detail.label}
+                      </h3>
+                      {detail.href ? (
+                        <a
+                          href={detail.href}
+                          className="mt-0.5 block text-base font-bold text-foreground hover:text-primary transition-colors"
+                        >
+                          {detail.value}
+                        </a>
+                      ) : (
+                        <p className="mt-0.5 text-base font-bold text-foreground">
+                          {detail.value}
                         </p>
-                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                          {step.description}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div> */}
+                      )}
+                      <p className="text-xs text-muted-foreground">
+                        {detail.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Bottom Feature Card: Version 4 (Instant Booking) */}
+              <div className="rounded-xl border border-primary/25 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-4.5 shadow-xs">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={16} className="text-primary" />
+                    <h4 className="text-xs font-bold text-foreground">
+                      Need an Immediate Discussion?
+                    </h4>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Q3/Q4 Open</span>
+                  </span>
+                </div>
+
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                  Speak directly with our Lead Technical Architect for a free 15-minute scope &amp; architecture assessment.
+                </p>
+
+                <a
+                  href="#contact-form"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-brand-700 transition-colors group cursor-pointer"
+                >
+                  <span>Schedule a 15-Min Discovery Call</span>
+                  <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </div>
             </div>
 
+            {/* Right Column: Contact Form */}
             <ContactForm />
           </div>
         </div>

@@ -76,7 +76,7 @@ export default function Reviews() {
   const row2 = reviews.slice(Math.ceil(reviews.length / 2));
 
   return (
-    <section aria-label="Engineering testimonials" className="py-8 sm:py-12 lg:py-16 2xl:py-20 bg-slate-50/40 border-t border-border/70">
+    <section aria-label="Engineering testimonials" className="bg-white border-t border-border/70 py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 text-center lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-center gap-2">
           <span className="h-2 w-2 rounded-full bg-primary" />
@@ -88,9 +88,6 @@ export default function Reviews() {
         <h2 className="mt-2 text-[1.75rem] font-extrabold leading-tight text-foreground sm:text-[2.25rem] lg:text-[2.65rem] xl:text-[3rem] 2xl:text-[3.5rem]">
           {headline}
         </h2>
-        <p className="mx-auto mt-1.5 max-w-xl 2xl:max-w-2xl text-xs sm:text-sm 2xl:text-base text-muted-foreground">
-          {description}
-        </p>
       </div>
 
       <div className="mt-6 space-y-3.5 sm:mt-7 2xl:mt-10 2xl:space-y-5">

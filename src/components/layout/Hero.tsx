@@ -126,7 +126,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.1 }}
-          className="mx-auto mt-4 sm:mt-5 lg:mt-6 3xl:mt-10 max-w-xl sm:max-w-2xl lg:max-w-3xl 3xl:max-w-5xl text-sm sm:text-base lg:text-lg 3xl:text-2xl text-muted-foreground leading-relaxed font-normal"
+          className="mx-auto mt-4 sm:mt-5 lg:mt-6 max-w-xl sm:max-w-2xl lg:max-w-3xl text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed font-normal"
         >
           {HERO_DATA.description}
         </motion.p>

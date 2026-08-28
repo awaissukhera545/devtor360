@@ -5,11 +5,12 @@ import { MapPin } from "lucide-react";
 
 // ── Map config ────────────────────────────────────────────────────────────────
 const OFFICE = {
-  lat: 31.4695,
-  lng: 74.2728,
+  lat: 31.47831,
+  lng: 74.28144,
   label: "Devtor360 HQ",
-  address: "2nd Floor, HBFC Building, Johar Town, Lahore, Pakistan",
-  detail: "",
+  plusCode: "F7HJ+8H Lahore, Pakistan",
+  address: "Abdul Haq Road, Johar Town, Lahore, Pakistan",
+  detail: "Plus Code: F7HJ+8H",
 };
 
 // ── Leaflet Map (browser-only) ────────────────────────────────────────────────
@@ -79,10 +80,10 @@ export default function ContactMap() {
         .bindPopup(
           `<div style="font-family:inherit;padding:4px 2px;min-width:180px;">
             <p style="font-weight:700;font-size:14px;color:#090e17;margin:0 0 4px;">${OFFICE.label}</p>
-            
+            <p style="font-size:12px;color:#006bf2;font-weight:600;margin:0 0 2px;">${OFFICE.plusCode}</p>
             <p style="font-size:12px;color:#64748b;margin:0;">${OFFICE.address}</p>
           </div>`,
-          { maxWidth: 240, className: "devtor-popup" }
+          { maxWidth: 260, className: "devtor-popup" }
         )
         .openPopup();
     }
@@ -96,7 +97,7 @@ export default function ContactMap() {
   }, []);
 
   return (
-    <section aria-label="Our location on map" className="py-12 sm:py-16">
+    <section aria-label="Our location on map" className="pt-2 pb-10 sm:pt-4 sm:pb-14">
       <div className="mx-auto max-w-content px-6 lg:px-8">
         {/* ── Section header ─────────────────────────────────────────────── */}
         <div className="mb-8 flex flex-col items-center gap-3 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left">

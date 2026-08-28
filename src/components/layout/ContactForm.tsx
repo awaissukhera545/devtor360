@@ -51,7 +51,7 @@ export default function ContactForm() {
   const isSending = status === "sending";
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 shadow-md sm:p-8 lg:p-10">
+    <div id="contact-form" className="rounded-2xl border border-border bg-card p-5 shadow-md sm:p-8 lg:p-10 scroll-mt-24">
       <h2 className="text-2xl font-bold leading-tight text-foreground sm:text-[1.75rem]">
         {form.title}
       </h2>

@@ -68,17 +68,13 @@ function StatDockItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: 0.1 + index * 0.08 }}
-      className="flex flex-col items-center text-center px-4 py-5 sm:py-6"
+      className="flex flex-col items-center text-center px-4 py-6 sm:py-8"
     >
-      <div className="flex items-center gap-1.5 mb-1.5 text-xs font-semibold text-primary">
-        <Icon size={14} className="text-primary" />
-        <span>{stat.highlight}</span>
-      </div>
-      <p className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl lg:text-4xl leading-none">
+      <p className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl leading-none">
         {count}
         <span className="text-primary">{stat.suffix}</span>
       </p>
-      <p className="mt-1.5 text-xs sm:text-sm font-medium text-muted-foreground">
+      <p className="mt-2 text-xs sm:text-sm font-medium text-muted-foreground">
         {stat.label}
       </p>
     </motion.div>
@@ -87,7 +83,7 @@ function StatDockItem({
 
 export default function StatsDock() {
   return (
-    <section aria-label="Key performance metrics" className="standalone-4k-hide py-6 sm:py-8 lg:py-10 bg-slate-50/50 border-b border-border/70">
+    <section aria-label="Key performance metrics" className="standalone-4k-hide bg-[#f8fafc] border-b border-border/70 py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

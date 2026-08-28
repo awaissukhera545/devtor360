@@ -25,14 +25,14 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function Services() {
-  const { services, eyebrow, badgeSubtitle, deliverablesHeading, advantagesHeading, ctaButtonPrefix, ctaHref } = SERVICES_SECTION_DATA;
+  const { services, eyebrow, ctaButtonPrefix, ctaHref } = SERVICES_SECTION_DATA;
   const [selectedId, setSelectedId] = useState<string>(services[0]?.id || "web-platforms");
 
   const activeService =
     services.find((s) => s.id === selectedId) || services[0];
 
   return (
-    <section id="services" aria-label="Services and capabilities" className="py-8 sm:py-12 lg:py-16 2xl:py-20 bg-white">
+    <section id="services" aria-label="Services and capabilities" className="bg-[#f8fafc] py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* ── Services Header & Tabs ─────────────────────────────────── */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-border/80 pb-4 sm:pb-5 2xl:pb-6">
@@ -86,28 +86,14 @@ export default function Services() {
                       <span className="rounded-full bg-primary/10 border border-primary/20 px-2.5 py-0.5 2xl:px-3.5 2xl:py-1 text-xs 2xl:text-sm font-bold text-primary">
                         {activeService.badge}
                       </span>
-                      <span className="text-xs 2xl:text-sm font-semibold text-muted-foreground">
-                        {badgeSubtitle}
-                      </span>
                     </div>
 
-                    <h3 className="mt-3 2xl:mt-4 text-xl font-extrabold text-foreground sm:text-2xl lg:text-[1.75rem] 2xl:text-3xl leading-tight">
+                    <h3 className="mt-3 text-xl font-extrabold text-foreground sm:text-2xl lg:text-[1.75rem] leading-tight">
                       {activeService.title}
                     </h3>
 
-                    <p className="mt-1 text-sm font-semibold text-primary sm:text-base 2xl:text-lg">
-                      {activeService.headline}
-                    </p>
-
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm 2xl:text-base">
-                      {activeService.description}
-                    </p>
-
                     {/* Deliverables Checklist */}
                     <div className="mt-4 2xl:mt-6 space-y-2 pt-3.5 2xl:pt-5 border-t border-border/80">
-                      <p className="text-xs 2xl:text-sm font-bold uppercase tracking-wider text-foreground">
-                        {deliverablesHeading}
-                      </p>
                       {activeService.deliverables.map((item, i) => (
                         <div key={i} className="flex items-start gap-2 text-xs sm:text-sm 2xl:text-base text-foreground/85">
                           <CheckCircle2 size={15} className="text-emerald-500 shrink-0 mt-0.5 2xl:w-5 2xl:h-5" />
@@ -133,10 +119,7 @@ export default function Services() {
                 {/* Right Column: Key Features & Outcome Metrics */}
                 <div className="flex flex-col justify-between h-full rounded-2xl 2xl:rounded-3xl border border-border bg-white p-4 sm:p-5 2xl:p-8 shadow-xs">
                   <div>
-                    <h4 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider text-foreground">
-                      {advantagesHeading}
-                    </h4>
-                    <ul className="mt-2.5 2xl:mt-4 space-y-2 2xl:space-y-3 text-xs sm:text-sm 2xl:text-base text-muted-foreground">
+                    <ul className="space-y-2 2xl:space-y-3 text-xs sm:text-sm 2xl:text-base text-muted-foreground">
                       {activeService.features.map((feat, i) => (
                         <li key={i} className="flex items-center gap-2 text-foreground font-medium">
                           <span className="h-1.5 w-1.5 2xl:h-2 2xl:w-2 rounded-full bg-primary shrink-0" />

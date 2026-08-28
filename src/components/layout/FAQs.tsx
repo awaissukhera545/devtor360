@@ -11,7 +11,7 @@ export default function FAQs() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faqs" aria-label="Frequently asked questions" className="py-8 sm:py-12 lg:py-16 2xl:py-20 border-t border-border/60">
+    <section id="faqs" aria-label="Frequently asked questions" className="bg-[#f8fafc] border-t border-border/60 py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-center gap-2">
           <span className="h-2 w-2 rounded-full bg-primary" />
@@ -23,9 +23,6 @@ export default function FAQs() {
         <h2 className="mt-2 text-center text-[1.5rem] font-bold leading-tight text-foreground sm:text-[1.875rem] lg:text-[2.15rem] xl:text-[2.65rem] 2xl:text-[3rem]">
           {headline}
         </h2>
-        <p className="mx-auto mt-1.5 max-w-xl 2xl:max-w-2xl text-center text-xs sm:text-sm 2xl:text-base text-muted-foreground">
-          {description}
-        </p>
 
         {/* ── FAQ Accordion ─────────────────────────────────────────── */}
         <div className="mx-auto mt-6 2xl:mt-10 max-w-3xl 2xl:max-w-4xl divide-y divide-border border-t border-border sm:mt-7">

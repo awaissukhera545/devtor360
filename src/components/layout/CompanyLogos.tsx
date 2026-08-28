@@ -10,7 +10,7 @@ const ITEMS = [
 
 export default function CompanyLogos() {
   return (
-    <section aria-label="Trusted by" className="standalone-4k-hide py-6 sm:py-8">
+    <section aria-label="Trusted by" className="standalone-4k-hide bg-white py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 lg:px-8">
         {/* ── Minimalist Logos Marquee ───────────────────────────────── */}
         <div className="rounded-2xl border border-border bg-white py-4 px-4 shadow-xs sm:py-5 sm:px-6">
@@ -32,15 +32,6 @@ export default function CompanyLogos() {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* ── Subtitle Below Box ──────────────────────────────────────── */}
-        <div className="mt-3.5 flex items-center justify-center gap-2 text-center">
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-          <p className="text-xs font-bold tracking-[0.2em] text-muted-foreground uppercase">
-            {CLIENTS_DATA.eyebrow}
-          </p>
-          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         </div>
       </div>
     </section>

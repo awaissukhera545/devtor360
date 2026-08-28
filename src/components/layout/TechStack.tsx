@@ -13,7 +13,7 @@ export default function TechStack() {
   const { eyebrow, headline, description } = TECH_STACK_DATA;
 
   return (
-    <section aria-label="Technologies we use" className="bg-slate-50/50 py-8 sm:py-10 lg:py-14 2xl:py-18 border-y border-border/70">
+    <section aria-label="Technologies we use" className="bg-white py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 text-center lg:px-8 xl:px-12 2xl:px-16">
         <div className="flex items-center justify-center gap-2">
           <span className="h-2 w-2 rounded-full bg-primary" />
@@ -21,13 +21,6 @@ export default function TechStack() {
             {eyebrow}
           </span>
         </div>
-
-        <h2 className="mt-2 text-[1.5rem] font-extrabold leading-tight text-foreground sm:text-[1.875rem] lg:text-[2.25rem] 2xl:text-[2.75rem]">
-          {headline}
-        </h2>
-        <p className="mx-auto mt-1.5 max-w-xl 2xl:max-w-2xl text-xs sm:text-sm 2xl:text-base text-muted-foreground">
-          {description}
-        </p>
       </div>
 
       {/* ── Reverse Marquee ─────────────────────────────────────────── */}
