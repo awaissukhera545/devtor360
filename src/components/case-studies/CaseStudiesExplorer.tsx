@@ -223,8 +223,7 @@ export default function CaseStudiesExplorer() {
         <section className="mx-auto max-w-content px-6 py-6 lg:px-8">
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-primary" />
+              <div className="flex items-center">
                 <span className="text-xs font-bold tracking-wider text-primary uppercase">
                   Flagship Deliverables
                 </span>
@@ -321,8 +320,7 @@ export default function CaseStudiesExplorer() {
         {activeCategory === "All" && !searchQuery && (
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-primary" />
+              <div className="flex items-center">
                 <span className="text-xs font-bold tracking-wider text-primary uppercase">
                   Complete Domain Portfolio
                 </span>
@@ -433,8 +431,7 @@ export default function CaseStudiesExplorer() {
       <section className="bg-slate-50/70 border-y border-border/70 py-14 sm:py-18">
         <div className="mx-auto max-w-content px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <div className="flex items-center justify-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-primary" />
+            <div className="flex items-center justify-center">
               <span className="text-xs font-bold tracking-wider text-primary uppercase">
                 Verified Client Reviews
               </span>

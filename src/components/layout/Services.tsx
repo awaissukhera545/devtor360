@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   Rocket,
   Palette,
+  Cloud,
   CheckCircle2,
   ArrowUpRight,
 } from "lucide-react";
@@ -17,9 +18,10 @@ import { SERVICES_SECTION_DATA } from "@/lib/site-data";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   "web-platforms": Code2,
+  "cyber-security": ShieldCheck,
   "ai-systems": Cpu,
   "mobile-apps": Smartphone,
-  "cloud-devops": ShieldCheck,
+  "cloud-devops": Cloud,
   "rapid-mvp": Rocket,
   "ui-ux-design": Palette,
 };
@@ -36,8 +38,7 @@ export default function Services() {
       <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* ── Services Header & Tabs ─────────────────────────────────── */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-border/80 pb-4 sm:pb-5 2xl:pb-6">
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="h-2 w-2 rounded-full bg-primary" />
+          <div className="flex items-center shrink-0">
             <span className="text-xs sm:text-sm 2xl:text-base font-bold tracking-wider text-primary uppercase">
               {eyebrow}
             </span>

@@ -18,8 +18,7 @@ export default function Projects() {
     <section id="portfolio" aria-label="Featured work" className="bg-[#f8fafc] overflow-hidden py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* ── Eyebrow ─────────────────────────────────────────────────── */}
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-primary" />
+        <div className="flex items-center">
           <span className="text-xs sm:text-sm 2xl:text-base font-bold tracking-wider text-primary uppercase">
             {eyebrow}
           </span>

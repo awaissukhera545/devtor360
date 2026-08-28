@@ -166,8 +166,7 @@ export default async function CaseStudyPage({
 
       {/* ── Deliverables & Architecture ─────────────────────────────── */}
       <section className="mx-auto max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-6 py-10 lg:px-8 lg:py-14">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="h-2 w-2 rounded-full bg-primary" />
+        <div className="flex items-center mb-2">
           <span className="text-xs font-bold tracking-wider text-primary uppercase">Deliverables</span>
         </div>
         <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl mb-6">

@@ -100,17 +100,11 @@ export default function Contact() {
 
               {/* Bottom Feature Card: Version 4 (Instant Booking) */}
               <div className="rounded-xl border border-primary/25 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-4.5 shadow-xs">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={16} className="text-primary" />
-                    <h4 className="text-xs font-bold text-foreground">
-                      Need an Immediate Discussion?
-                    </h4>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>Q3/Q4 Open</span>
-                  </span>
+                <div className="flex items-center gap-2">
+                  <Calendar size={16} className="text-primary" />
+                  <h4 className="text-xs font-bold text-foreground">
+                    Need an Immediate Discussion?
+                  </h4>
                 </div>
 
                 <p className="mt-2 text-xs text-muted-foreground leading-relaxed">

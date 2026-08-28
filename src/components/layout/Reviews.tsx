@@ -78,8 +78,7 @@ export default function Reviews() {
   return (
     <section aria-label="Engineering testimonials" className="bg-white border-t border-border/70 py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 text-center lg:px-8 xl:px-12 2xl:px-16">
-        <div className="flex items-center justify-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-primary" />
+        <div className="flex items-center justify-center">
           <span className="text-xs sm:text-sm 2xl:text-base font-mono font-bold tracking-widest text-primary uppercase">
             {eyebrow}
           </span>

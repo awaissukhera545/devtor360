@@ -13,8 +13,7 @@ export default function FAQs() {
   return (
     <section id="faqs" aria-label="Frequently asked questions" className="bg-[#f8fafc] border-t border-border/60 py-10 sm:py-14">
       <div className="mx-auto max-w-content px-6 lg:px-8 xl:px-12 2xl:px-16">
-        <div className="flex items-center justify-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-primary" />
+        <div className="flex items-center justify-center">
           <span className="text-xs sm:text-sm 2xl:text-base font-bold tracking-wider text-primary uppercase">
             {eyebrow}
           </span>

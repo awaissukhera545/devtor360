@@ -7,7 +7,7 @@ import { MapPin } from "lucide-react";
 const OFFICE = {
   lat: 31.47831,
   lng: 74.28144,
-  label: "Devtor360 HQ",
+  label: "Devtor360",
   plusCode: "F7HJ+8H Lahore, Pakistan",
   address: "Abdul Haq Road, Johar Town, Lahore, Pakistan",
   detail: "Plus Code: F7HJ+8H",
